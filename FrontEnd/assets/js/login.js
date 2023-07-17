@@ -4,8 +4,8 @@ const url = 'https://your-api-url/users/login';
 
 // Données d'identification de l'utilisateur
 const payload = {
-  email: 'your-email@example.com',
-  password: 'your-password'
+  email: 'string',
+  password: 'string'
 };
 
 // Options de la requête POST

@@ -1,6 +1,8 @@
 // JavaScript Code
 let gallery = document.querySelector('.gallery');
 let projects = [];
+let categories = [];
+let categoriesFilters = document.querySelector('.categories-filters')
 
 async function getProjects() {
   await fetch('http://localhost:5678/api/works')
@@ -19,6 +21,7 @@ async function displayProjects() {
 
     let figure = document.createElement('figure');
     figure.setAttribute('class', 'display');
+    figure.setAttribute('data-category-id',project.categoryId)
 
     // Add the image to the figure element
     let img = document.createElement('img');
@@ -27,16 +30,44 @@ async function displayProjects() {
     figure.appendChild(img);
 
     // Add project information (e.g., title and description) to the figure element
-    let titleElement = document.createElement('h2');
+    let titleElement = document.createElement('p');
     titleElement.textContent = project.title; // Assuming title is the property holding the project title
     figure.appendChild(titleElement);
 
-    let descriptionElement = document.createElement('p');
-    descriptionElement.textContent = project.description; // Assuming description is the property holding the project description
-    figure.appendChild(descriptionElement);
 
     gallery.appendChild(figure);
   }
 }
 
 displayProjects();
+
+async function getCategories() {
+  await fetch('http://localhost:5678/api/categories')
+    .then((response) => response.json())
+    .then((data) => {
+      categories = data;
+    })
+    .catch((error) => console.log(error));
+}
+async function displayCategories(){
+  await getProjects();
+  await getCategories();
+  console.log(categories);
+  for (let categorie of categories){
+    console.log(categorie)
+    let button = document.createElement('button')
+    button.innerText = categorie.name
+    categoriesFilters.appendChild(button);
+    button.addEventListener("click",function(event){
+      let projectsInGallery = document.querySelectorAll(".gallery figure")
+      for (let projectInGallery of projectsInGallery){
+        console.log(categorie.id)
+        console.log(projectInGallery.getAttribute('data-category-id'))
+        console.log('-----')
+      }
+    })
+
+
+  }
+}
+displayCategories();
