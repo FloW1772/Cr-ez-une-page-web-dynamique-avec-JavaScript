@@ -42,32 +42,43 @@ async function displayProjects() {
 displayProjects();
 
 async function getCategories() {
-  await fetch('http://localhost:5678/api/categories')
-    .then((response) => response.json())
-    .then((data) => {
-      categories = data;
-    })
-    .catch((error) => console.log(error));
-}
-async function displayCategories(){
-  await getProjects();
-  await getCategories();
-  console.log(categories);
-  for (let categorie of categories){
-    console.log(categorie)
-    let button = document.createElement('button')
-    button.innerText = categorie.name
-    categoriesFilters.appendChild(button);
-    button.addEventListener("click",function(event){
-      let projectsInGallery = document.querySelectorAll(".gallery figure")
-      for (let projectInGallery of projectsInGallery){
-        console.log(categorie.id)
-        console.log(projectInGallery.getAttribute('data-category-id'))
-        console.log('-----')
-      }
-    })
-
-
+  try {
+    const response = await fetch('http://localhost:5678/api/categories');
+    const data = await response.json();
+    categories = data;
+  } catch (error) {
+    console.log(error);
   }
 }
+
+async function displayCategories() {
+  await getCategories(); // Attendez que les catégories soient récupérées avant de continuer.
+  console.log(categories);
+
+  // Supposons que `categoriesFilters` est défini comme un élément DOM valide.
+  for (let categorie of categories) {
+    console.log(categorie);
+    let button = document.createElement('button');
+    button.innerText = categorie.name;
+    categoriesFilters.appendChild(button);
+    button.addEventListener("click", function (event) {
+      filterProjectsByCategory(categorie.id);
+    });
+  }
+}
+
+function filterProjectsByCategory(categoryId) {
+  let projectsInGallery = document.querySelectorAll(".gallery figure");
+  for (let projectInGallery of projectsInGallery) {
+    const projectCategoryId = projectInGallery.getAttribute('data-category-id');
+    if (projectCategoryId === categoryId) {
+      // Afficher les projets de cette catégorie.
+      projectInGallery.style.display = "block";
+    } else {
+      // Masquer les projets qui n'appartiennent pas à cette catégorie.
+      projectInGallery.style.display = "none";
+    }
+  }
+}
+
 displayCategories();
