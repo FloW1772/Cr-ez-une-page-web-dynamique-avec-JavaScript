@@ -54,6 +54,7 @@ async function displayCategories() {
 
     let button = document.createElement('button');
     button.innerText = category.name;
+    button.classList.add('button'); // Ajout de la classe "button" au bouton
     categoriesFilters.appendChild(button);
 
     button.addEventListener('click', function (event) {
