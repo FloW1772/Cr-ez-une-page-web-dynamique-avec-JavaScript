@@ -14,7 +14,6 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
     return;
   }
 
-  // Email validation using regex (simple example)
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     console.error('L\'email n\'est pas valide.');
@@ -38,26 +37,26 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
 
   // Envoi de la requête POST
   fetch(url, options)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('La connexion a échoué.');
-      }
-    })
-    .then(data => {
-      // La connexion a réussi
-      const userId = data.userId;
-      const token = data.token;
+  .then(response => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw new Error('La connexion a échoué.')
+    }
+  })
+  .then(data => {
+    // La connexion a réussi
+    const userId = data.userId
+    const token = data.token
 
-      // Enregistrement du token en session
-      sessionStorage.setItem('userId', userId);
-      sessionStorage.setItem('token', token);
+    // Enregistrement du token en local storage au lieu de session storage
+    localStorage.setItem('userId', userId)
+    localStorage.setItem('token', token)
 
-      // Redirection vers la page d'accueil (modifier le chemin en fonction de votre application)
-      window.location.href = '/home';
-    })
-    .catch(error => {
-      console.error(error);
-    });
-});
+    // Redirection vers la page d'accueil (modifier le chemin en fonction de votre application)
+    window.location.href = '/home'
+  })
+  .catch(error => {
+    console.error(error)
+  })
+  })
