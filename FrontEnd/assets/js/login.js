@@ -44,18 +44,29 @@ if (password === '') {
 return true;
 }
 
-fetch ('http://localhost:5678/api/users/login', {
-  method:'POST',
-  headers:{
-    'Accept':"application/json", 
-    "Content-Type":'application/json'
-  }, 
-  body:JSON.stringify({email:username,password:password})
-}).then((response) =>response.json)
-.then((data)=>{
-  //vérifier si l'utilisateur trouvé
-  //enregistrer le token dans local storage rediriger vers la page d'acceuil
-}).catch((error)=>console.log(error))
+fetch('http://localhost:5678/api/users/login', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ email: username, password: password })
+})
+  .then((response) => response.json())
+  .then((data) => {
+    // Le serveur a renvoyé une réponse au format JSON, nous pouvons accéder aux données ici
+    if (data.userFound) {
+      // L'utilisateur a été trouvé, enregistrez le jeton dans le stockage local
+      localStorage.setItem('token', data.token);
+
+      // Redirigez vers la page d'accueil (ou toute autre page appropriée)
+      window.location.href = '/accueil'; // Remplacez '/accueil' par l'URL de votre page d'accueil
+    } else {
+      // L'utilisateur n'a pas été trouvé, affichez un message d'erreur ou effectuez une autre action appropriée
+      console.log('Utilisateur non trouvé.');
+    }
+  })
+  .catch((error) => console.log(error));
 
 
   // Appeler la fonction de connexion avec les informations d'identification
