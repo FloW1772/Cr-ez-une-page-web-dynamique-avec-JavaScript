@@ -3,7 +3,7 @@ function performLogin(username, password) {
   // Remplacez cette partie par votre logique de connexion réelle
   return new Promise((resolve, reject) => {
     // Supposons que le nom d'utilisateur est "admin" et le mot de passe est "12345"
-    if (username === "admin" && password === "12345") {
+    if (email === "admin" && password === "12345") {
       resolve({ message: "Connexion réussie !" });
     } else {
       reject({ message: "Nom d'utilisateur ou mot de passe incorrect." });
@@ -22,14 +22,27 @@ const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
-  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ 
 //vérifier les champs
-if(username === ''){
-
+if(email === ''){
+  alert("Veuillez saisir une adresse e-mail.");
+  return false; // Empêcher la soumission du formulaire si le champ est vide
+} else if (!emailRegex.test(email)) {
+  alert("Veuillez saisir une adresse e-mail valide.");
+  return false; // Empêcher la soumission du formulaire si l'adresse e-mail est invalide
 }
 
+// Vérification du champ "password"
+if (password === '') {
+  alert("Veuillez saisir un mot de passe.");
+  return false; // Empêcher la soumission du formulaire si le champ est vide
+}
+
+// Si tout est correct, le formulaire peut être soumis
+return true;
+}
 
 fetch ('http://localhost:5678/api/users/login', {
   method:'POST',
