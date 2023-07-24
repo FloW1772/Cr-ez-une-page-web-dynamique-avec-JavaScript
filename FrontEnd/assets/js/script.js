@@ -49,6 +49,7 @@ async function displayProjects() {
 async function displayCategories() {
   await getCategories();
   console.log(categories);
+  categories.unshift({name:'Tous'})
   for (let category of categories) {
     console.log(category);
 
@@ -64,7 +65,10 @@ async function displayCategories() {
         console.log(category.id);
         console.log(projectInGallery.getAttribute('data-category-id'));
 
-        if (parseInt(projectInGallery.getAttribute('data-category-id')) === category.id) {
+        if (category.id === undefined){
+          projectInGallery.style.display = 'block'; // Afficher les projets de la catégorie sélectionnée
+
+        }else if (parseInt(projectInGallery.getAttribute('data-category-id')) === category.id) {
           projectInGallery.style.display = 'block'; // Afficher les projets de la catégorie sélectionnée
         } else {
           projectInGallery.style.display = 'none'; // Masquer les projets qui n'appartiennent pas à la catégorie sélectionnée

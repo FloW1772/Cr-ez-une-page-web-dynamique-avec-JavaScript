@@ -1,4 +1,3 @@
-// homepage.js (ou toute autre page où vous souhaitez vérifier le statut de connexion de l'utilisateur)
 
 // Fonction pour vérifier si l'utilisateur est connecté
 function verifierConnexion() {

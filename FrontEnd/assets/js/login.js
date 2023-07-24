@@ -24,6 +24,26 @@ loginForm.addEventListener("submit", function (event) {
 
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ 
+//vérifier les champs
+if(username === ''){
+
+}
+
+
+fetch ('http://localhost:5678/api/users/login', {
+  method:'POST',
+  headers:{
+    'Accept':"application/json", 
+    "Content-Type":'application/json'
+  }, 
+  body:JSON.stringify({email:username,password:password})
+}).then((response) =>response.json)
+.then((data)=>{
+  //vérifier si l'utilisateur trouvé
+  //enregistrer le token dans local storage rediriger vers la page d'acceuil
+}).catch((error)=>console.log(error))
+
 
   // Appeler la fonction de connexion avec les informations d'identification
   performLogin(username, password)
