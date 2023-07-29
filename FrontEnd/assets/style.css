@@ -201,6 +201,9 @@ footer nav ul {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
     margin: 5px; /* Espacement entre chaque bouton */
+	margin-bottom: 57px;
+	position: relative;
+	left: 25%;
 }
 
 .button:hover {
