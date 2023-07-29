@@ -266,9 +266,15 @@ form {
   #close-modal {
 	margin-top: 10px;
   }
-  
-  /* Style pour l'icône "modifier" (remplacez .fa-regular par la classe réelle des icônes que vous utilisez) */
-  #modifier-icon {
-	/* Ajoutez ici les styles appropriés pour l'icône */
-  }
+  #span-modif-icon {
+    margin-right: 50px; /* Vous pouvez ajuster le décalage horizontal ici */
+}
+
+#span-modif-text {
+    margin-left: 50px; /* Vous pouvez ajuster le décalage horizontal ici */
+}
+
+
+
+
   
