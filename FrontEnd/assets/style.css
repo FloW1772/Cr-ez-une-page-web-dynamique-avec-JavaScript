@@ -192,8 +192,8 @@ footer nav ul {
 /* Style de base pour le bouton */
 .button {
     padding: 10px 20px;
-    background-color: #1D6154;
-    color: #fff;
+    background-color: #fff;
+    color: #1D6154;
     border: none;
     border-radius: 25px; /* Valeur plus élevée pour un bouton plus arrondi */
     font-size: 16px;
@@ -207,14 +207,29 @@ footer nav ul {
 }
 
 .button:hover {
-	border-color: #1D6154;
-    background-color: white;
-	color: #1D6154;
+	border-color: #fff;
+    background-color: #1D6154;
+	color: #fff;
 }
 
 .button:active {
     transform: translateY(2px);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.button-connection {
+    padding: 10px 20px;
+    background-color: #1D6154;
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Valeur plus élevée pour un bouton plus arrondi */
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    margin: 5px; /* Espacemew: 2px nt entre chaque bouton */
+	margin-bottom: 57px;
+	position: relative;
+	margin-top: 5px;
 }
 a {
 	text-decoration: none; /* Supprimer le soulignement */
