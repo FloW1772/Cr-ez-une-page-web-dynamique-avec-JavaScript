@@ -40,7 +40,6 @@ loginForm.addEventListener("submit", function (event) {
   }
 
   // Si tout est correct, le formulaire peut être soumis
-  // return true; <- Vous pouvez retirer cette ligne, car il n'est pas nécessaire de retourner true ici
 
   // Envoi de la requête de connexion au serveur
   fetch('http://localhost:5678/api/users/login', {
@@ -77,7 +76,7 @@ loginForm.addEventListener("submit", function (event) {
 function isAdmin() {
   const token = localStorage.getItem('token');
   // Remplacez cette condition par celle que vous utilisez pour vérifier si le token est celui d'un administrateur
-  return token !== null && token === 'votre_token_admin'; // Vérifiez si le token est celui d'un administrateur
+  return token !== null && token === localStorage.getItem('userToken'); // Vérifiez si le token correspond à celui précédemment enregistré
 }
 
 // Fonction pour activer le mode administrateur
