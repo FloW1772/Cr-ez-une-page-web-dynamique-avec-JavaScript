@@ -20,7 +20,7 @@ const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
-  const email = document.getElementById("email").value;
+  const email = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -52,38 +52,27 @@ loginForm.addEventListener("submit", function (event) {
   })
   .then((response) => response.json())
   .then((data) => {
+    console.log(data)
     // Le serveur a renvoyé une réponse au format JSON, nous pouvons accéder aux données ici
-    if (data.userFound) {
+    if (data && !data.message) {
+      debugger
       // L'utilisateur a été trouvé, enregistrez le jeton dans le stockage local
       localStorage.setItem('token', data.token);
 
-      // Vérifiez si l'utilisateur est un administrateur et activez le mode administrateur si c'est le cas
-      if (isAdmin()) {
-        activerModeAdministrateur();
-      }
+     
 
       // Redirigez vers la page d'accueil (ou toute autre page appropriée)
-      window.location.href = '/accueil'; // Remplacez '/accueil' par l'URL de votre page d'accueil
+      window.location.href = 'http://127.0.0.1:5500/FrontEnd/index.html'; // Remplacez '/accueil' par l'URL de votre page d'accueil
     } else {
       // L'utilisateur n'a pas été trouvé, affichez un message d'erreur ou effectuez une autre action appropriée
       console.log('Utilisateur non trouvé.');
+      // div vides message d'errreur
     }
   })
   .catch((error) => console.log(error));
 });
 
-// Fonction pour vérifier si le token est présent dans le Local Storage et s'il correspond à un administrateur
-function isAdmin() {
-  const token = localStorage.getItem('token');
-  // Remplacez cette condition par celle que vous utilisez pour vérifier si le token est celui d'un administrateur
-  return token !== null && token === localStorage.getItem('userToken'); // Vérifiez si le token correspond à celui précédemment enregistré
-}
 
-// Fonction pour activer le mode administrateur
-function activerModeAdministrateur() {
-  // Mettez ici le code pour activer le mode administrateur, par exemple en affichant des fonctionnalités supplémentaires ou en modifiant l'apparence de l'interface.
-  console.log('Mode administrateur activé.');
-}
 
 
 
