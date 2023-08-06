@@ -246,7 +246,7 @@ form {
   }
   
   /* Ajouter de l'espace entre les éléments pour une meilleure mise en page */
-  label, input, button {
+ 	input, button {
 	margin: 7px 0;
   }
   
@@ -292,7 +292,33 @@ form {
 #span-modif-text {
     margin-left: 50px; /* Vous pouvez ajuster le décalage horizontal ici */
 }
-
+h2 {
+	margin-top: 20px; /* Ajout : Marge supérieure de 20px */
+  }
+/* Style pour les labels spécifiques à ce formulaire */
+.custom-label {
+	display: block;
+	margin-bottom: 5px;
+	border-color: #fff;
+	text-align: left;
+	/* Ajoutez d'autres styles spécifiques au label si nécessaire */
+  }
+  
+  /* Style pour les zones de texte */
+  input[type="text"].custom-input,
+  input[type="password"].custom-input {
+	width: 50%;
+	padding: 10px;
+	margin-bottom: 35px;
+	border: none; /* Modification : Supprimer la bordure */
+	background-color: #fff; /* Ajout : Rendre le fond transparent */
+	font-size: 16px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout : Box shadow autour de la zone de texte */
+	/* Ajoutez d'autres styles spécifiques à la zone de texte si nécessaire */
+  }
+  
+  
+  
 
 
 
