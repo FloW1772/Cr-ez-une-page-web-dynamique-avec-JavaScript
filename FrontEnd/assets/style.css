@@ -316,7 +316,9 @@ h2 {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout : Box shadow autour de la zone de texte */
 	/* Ajoutez d'autres styles spécifiques à la zone de texte si nécessaire */
   }
-  
+  .hidden {
+	display: none;
+  }
   
   
 
