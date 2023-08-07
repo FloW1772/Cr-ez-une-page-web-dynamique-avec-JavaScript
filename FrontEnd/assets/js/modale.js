@@ -1,10 +1,16 @@
-// Récupérez l'élément lien
-const openModalLink = document.getElementById('openModalLink');
-
-// Ajoutez un gestionnaire d'événements de clic au lien
-openModalLink.addEventListener('click', () => {
-  // Vous devrez modifier 'projects' pour faire référence à votre tableau de projets
-  for (let project of projects) {
-    openModal(project.imageUrl);
+function openModal(imageUrl, title) {
+    const modal = document.getElementById('myModal');
+    const modalImage = modal.querySelector('.modal-image');
+    const modalTitle = modal.querySelector('.modal-title');
+  
+    modalImage.src = imageUrl;
+    modalTitle.textContent = title;
+  
+    modal.style.display = 'block';
   }
-});
+  openModalLink.addEventListener('click', () => {
+    for (let project of projects) {
+      openModal(project.imageUrl, project.title);
+    }
+  });
+  
