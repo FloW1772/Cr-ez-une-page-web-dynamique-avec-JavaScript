@@ -8,9 +8,16 @@ function openModal(imageUrl, title) {
   
     modal.style.display = 'block';
   }
-  openModalLink.addEventListener('click', () => {
-    for (let project of projects) {
-      openModal(project.imageUrl, project.title);
-    }
-  });
-  
+  // openModalLink.addEventListener('click', () => {
+  //   for (let project of projects) {
+  //     openModal(project.imageUrl, project.title);
+  //   }
+  // });
+  if (isAdmin()){
+    const portfolioTitle  = document.querySelector(".portfolio-title");
+    const modifyBtn = document.createElement("button") 
+    modifyBtn.setAttribute('id', 'modify-btn')
+    modifyBtn.innerHTML = `<i></i> <span>modifier</span>`
+    portfolioTitle.appendChild(modifyBtn)
+
+  }

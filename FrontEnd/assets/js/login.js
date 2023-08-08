@@ -55,7 +55,7 @@ loginForm.addEventListener("submit", function (event) {
     console.log(data)
     // Le serveur a renvoyé une réponse au format JSON, nous pouvons accéder aux données ici
     if (data && !data.message) {
-      debugger
+      
       // L'utilisateur a été trouvé, enregistrez le jeton dans le stockage local
       localStorage.setItem('token', data.token);
 
