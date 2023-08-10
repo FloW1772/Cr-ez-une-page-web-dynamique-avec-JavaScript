@@ -17,7 +17,7 @@ function openModal(imageUrl, title) {
     const portfolioTitle  = document.querySelector(".portfolio-title");
     const modifyBtn = document.createElement("button") 
     modifyBtn.setAttribute('id', 'modify-btn')
-    modifyBtn.innerHTML = `<i></i> <span>modifier</span>`
+    modifyBtn.innerHTML = `<i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>`
     portfolioTitle.appendChild(modifyBtn)
 
   }
