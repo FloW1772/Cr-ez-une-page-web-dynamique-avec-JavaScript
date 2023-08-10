@@ -66,7 +66,18 @@ loginForm.addEventListener("submit", function (event) {
     } else {
       // L'utilisateur n'a pas été trouvé, affichez un message d'erreur ou effectuez une autre action appropriée
       console.log('Utilisateur non trouvé.');
-      // div vides message d'errreur
+      
+      const emailError = document.getElementById("emailError");
+      emailError.textContent = "";
+    
+      const passwordError = document.getElementById("passwordError");
+      passwordError.textContent = "";
+    
+      const userNotFoundError = document.getElementById("userNotFoundError");
+      userNotFoundError.textContent = "";
+    
+      const passwordIncorrectError = document.getElementById("passwordIncorrectError");
+      passwordIncorrectError.textContent = "";
     }
   })
   .catch((error) => console.log(error));

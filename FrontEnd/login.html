@@ -28,15 +28,20 @@
     <form id="loginForm">
       <label for="username" class="custom-label">E-mail</label>
       <input type="text" id="username" name="username" required class="custom-input">
-    
+      <div id="emailError" class="error-message"></div> <!-- Message d'erreur pour l'e-mail -->
+
       <label for="password" class="custom-label">Mot de passe</label>
       <input type="password" id="password" name="password" required class="custom-input">
+      <div id="passwordError" class="error-message"></div> <!-- Message d'erreur pour le mot de passe -->
 
       <button type="submit" class="button-connection">Se connecter</button>
-    </form>
-    
-    <p><a href="#">Mot de passe oublié ?</a></p>
-  </div>
+  </form>
+
+  <p><a href="#">Mot de passe oublié ?</a></p>
+  
+  <div id="userNotFoundError" class="error-message"></div> <!-- Message d'erreur pour l'utilisateur non trouvé -->
+  <div id="passwordIncorrectError" class="error-message"></div> <!-- Message d'erreur pour mot de passe incorrect -->
+</div>
   <script src="./assets/js/login.js"></script>
 </body>
 </html>

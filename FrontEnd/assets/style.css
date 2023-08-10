@@ -319,7 +319,13 @@ h2 {
   .hidden {
 	display: none;
   }
-  
+  .portfolio-title {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrer verticalement */
+    gap: 40px; /* Espace entre les éléments */
+}
+
   
 
 
