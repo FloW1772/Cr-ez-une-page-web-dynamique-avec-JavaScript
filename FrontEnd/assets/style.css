@@ -324,6 +324,14 @@ h2 {
     justify-content: center;
     align-items: center; /* Centrer verticalement */
     gap: 40px; /* Espace entre les éléments */
+
+	#modify-btn {
+		color: black; /* Couleur du texte par défaut */
+		background-color: #FFFEF8; /* Couleur de fond par défaut */
+		border: none;
+		padding: 10px 20px;
+		cursor: pointer;
+	  }
 }
 
   
