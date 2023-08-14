@@ -334,6 +334,31 @@ h2 {
 	  }
 }
 
+.black-bar {
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.black-bar i {
+    font-size: 24px;
+    margin-right: 350px;
+}
+
+.black-bar span {
+    margin-right: 450px;
+}
+
+.black-bar button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
   
 
 
