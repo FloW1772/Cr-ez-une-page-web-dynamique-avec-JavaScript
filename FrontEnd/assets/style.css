@@ -53,6 +53,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	position: relative;
 }
 header {
 	display: flex;
@@ -316,9 +317,7 @@ h2 {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout : Box shadow autour de la zone de texte */
 	/* Ajoutez d'autres styles spécifiques à la zone de texte si nécessaire */
   }
-  .hidden {
-	display: none;
-  }
+  
   .portfolio-title {
     display: flex;
     justify-content: center;
@@ -334,7 +333,7 @@ h2 {
 	  }
 }
 
-.black-bar .hidden {
+.black-bar  {
     background-color: black;
     color: white;
     position: relative;
@@ -344,8 +343,7 @@ h2 {
     display: flex;
     align-items: center;
     padding: 10px;
-	padding-left: 800px;
-	padding-right: 800px;
+
 }
 
 .black-bar i {
@@ -364,7 +362,49 @@ h2 {
     padding: 5px 10px;
     cursor: pointer;
 }
+.container-modal{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+}
+.background-gray{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(128, 128, 128, 0.404);
+}
+.modale{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background-color: white;
+	transform: translate(-50%,-50%);
+	height: 400px;
+	width: 40%;
+}
+.display-figure-modal{
+	height: 100px;
+	width: 100px;
+}
+.display-figure-modal img{
+	width: 100%;
+}
 
+.modal-container-gallery{
+	display: flex;
+	flex-wrap: wrap;
+
+
+}
+
+.hidden {
+	display: none;
+  }
   
 
 
