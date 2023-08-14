@@ -334,21 +334,27 @@ h2 {
 	  }
 }
 
-.black-bar {
+.black-bar .hidden {
     background-color: black;
     color: white;
+    position: relative;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%);
     display: flex;
     align-items: center;
     padding: 10px;
+	padding-left: 800px;
+	padding-right: 800px;
 }
 
 .black-bar i {
     font-size: 24px;
-    margin-right: 350px;
+    margin-right: 10px;
 }
 
 .black-bar span {
-    margin-right: 450px;
+    margin-right: 10px;
 }
 
 .black-bar button {

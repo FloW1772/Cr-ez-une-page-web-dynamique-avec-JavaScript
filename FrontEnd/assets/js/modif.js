@@ -10,9 +10,15 @@ function isAdmin() {
 // Fonction pour activer le mode administrateur
 function activerModeAdministrateur() {
   // Ajouter la barre noire en modifiant le style de la page
-    const blackBar = document.querySelector(".black-bar");
-    blackBar.classList.toggle("hidden")
-    blackBar.innerText = 'test'
+  const iconElement = document.createElement("i");
+  iconElement.className = "far fa-pen-to-square";
+
+  // Ajouter l'élément <i> à l'intérieur de la div appropriée
+  const blackBar = document.querySelector(".black-bar");
+  blackBar.appendChild(iconElement);
+
+  // Si la classe "hidden" doit être retirée pour afficher l'icône, vous pouvez le faire également
+  blackBar.classList.remove("hidden");
 
     // Récupérer tous les boutons existants sur la page
     const allCategoriesFilters = document.querySelector('.categories-filters');
