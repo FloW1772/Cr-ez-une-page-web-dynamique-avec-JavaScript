@@ -85,3 +85,93 @@ fetch(`http://localhost:5678/api/works/${id}`,{
 })
 .catch((error)=>console.log(error))
 }
+
+function generateAddImageForm() {
+  var addProjectDiv = document.querySelector('.add-project.hidden');
+
+  var form = document.createElement('form');
+  form.setAttribute('action', 'modale.js'); // Spécifiez l'action appropriée ici
+  form.setAttribute('method', 'POST');
+  form.setAttribute('enctype', 'multipart/form-data');
+  form.setAttribute('id', 'imageForm');
+
+  var titleLabel = document.createElement('h2');
+  titleLabel.textContent = 'Ajouter une image';
+
+  var imageLabel = document.createElement('label');
+  imageLabel.setAttribute('for', 'image');
+  imageLabel.textContent = 'Choisir une image :';
+
+  var imageInput = document.createElement('input');
+  imageInput.setAttribute('type', 'file');
+  imageInput.setAttribute('id', 'image');
+  imageInput.setAttribute('name', 'image');
+  imageInput.setAttribute('accept', 'image/*');
+  imageInput.setAttribute('required', 'true');
+
+  var nameLabel = document.createElement('label');
+  nameLabel.setAttribute('for', 'name');
+  nameLabel.textContent = 'Nom de l\'image :';
+
+  var nameInput = document.createElement('input');
+  nameInput.setAttribute('type', 'text');
+  nameInput.setAttribute('id', 'name');
+  nameInput.setAttribute('name', 'name');
+  nameInput.setAttribute('onkeyup', 'checkForm()');
+  nameInput.setAttribute('required', 'true');
+
+  var categoryLabel = document.createElement('label');
+  categoryLabel.setAttribute('for', 'category');
+  categoryLabel.textContent = 'Catégorie :';
+
+  var categorySelect = document.createElement('select');
+  categorySelect.setAttribute('id', 'category');
+  categorySelect.setAttribute('name', 'category');
+  categorySelect.setAttribute('onchange', 'checkForm()');
+  categorySelect.setAttribute('required', 'true');
+
+  var defaultOption = document.createElement('option');
+  defaultOption.setAttribute('value', '');
+  defaultOption.textContent = 'Sélectionner une catégorie';
+  categorySelect.appendChild(defaultOption);
+
+  var objetsOption = document.createElement('option');
+  objetsOption.setAttribute('value', 'objets');
+  objetsOption.textContent = 'Objets';
+  categorySelect.appendChild(objetsOption);
+
+  var appartementsOption = document.createElement('option');
+  appartementsOption.setAttribute('value', 'appartements');
+  appartementsOption.textContent = 'Appartements';
+  categorySelect.appendChild(appartementsOption);
+
+  var hotelsOption = document.createElement('option');
+  hotelsOption.setAttribute('value', 'hotels');
+  hotelsOption.textContent = 'Hotels & restaurants';
+  categorySelect.appendChild(hotelsOption);
+
+  var submitButton = document.createElement('button');
+  submitButton.setAttribute('type', 'submit');
+  submitButton.setAttribute('id', 'submitBtn');
+  submitButton.setAttribute('name', 'submit');
+  submitButton.setAttribute('disabled', 'true');
+  submitButton.textContent = 'Ajouter l\'image';
+
+  form.appendChild(titleLabel);
+  form.appendChild(imageLabel);
+  form.appendChild(imageInput);
+  form.appendChild(document.createElement('br'));
+  form.appendChild(nameLabel);
+  form.appendChild(nameInput);
+  form.appendChild(document.createElement('br'));
+  form.appendChild(categoryLabel);
+  form.appendChild(categorySelect);
+  form.appendChild(document.createElement('br'));
+  form.appendChild(submitButton);
+
+  addProjectDiv.innerHTML = ''; // Nettoie le contenu précédent
+  addProjectDiv.appendChild(form);
+}
+
+// Utilisation de la fonction pour générer le formulaire lorsqu'il est nécessaire
+generateAddImageForm();

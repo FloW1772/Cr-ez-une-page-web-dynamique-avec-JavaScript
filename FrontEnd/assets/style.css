@@ -401,6 +401,17 @@ h2 {
 
 
 }
+.button-container {
+    position: relative;
+    display: inline-block; /* Pour que le conteneur prenne la taille des boutons */
+}
+
+.button-container button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 
 .hidden {
 	display: none;
