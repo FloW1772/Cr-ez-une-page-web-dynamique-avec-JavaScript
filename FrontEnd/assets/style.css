@@ -388,8 +388,9 @@ h2 {
 	width: 40%;
 }
 .display-figure-modal{
-	height: 100px;
-	width: 100px;
+	height: 160px;
+	width: 17%;
+	position: relative;
 }
 .display-figure-modal img{
 	width: 100%;
@@ -398,20 +399,27 @@ h2 {
 .modal-container-gallery{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 90%;
+	margin: 0 auto;
 
 
 }
-.button-container {
+.display-figure-modal {
     position: relative;
     display: inline-block; /* Pour que le conteneur prenne la taille des boutons */
 }
 
-.button-container button {
+.btn-mouv {
+    position: absolute;
+    top: 0;
+    right: 30%;
+}
+.btn-trash {
     position: absolute;
     top: 0;
     right: 0;
 }
-
 
 .hidden {
 	display: none;
