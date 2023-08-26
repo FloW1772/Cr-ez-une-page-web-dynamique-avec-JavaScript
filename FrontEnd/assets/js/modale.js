@@ -100,10 +100,10 @@ fetch(`http://localhost:5678/api/works/${id}`,{
 .catch((error)=>console.log(error))
 }
 
+// Définition de la fonction pour générer le formulaire d'ajout d'image
 function generateAddImageForm(addProjectDiv) {
-
   var form = document.createElement('form');
-  form.setAttribute('action', 'modale.js'); // Spécifiez l'action appropriée ici
+  form.setAttribute('action', 'http://localhost:5678/api/images/add'); // Mettez l'URL de l'API appropriée ici
   form.setAttribute('method', 'POST');
   form.setAttribute('enctype', 'multipart/form-data');
   form.setAttribute('id', 'imageForm');
@@ -170,6 +170,24 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.setAttribute('disabled', 'true');
   submitButton.textContent = 'Ajouter l\'image';
 
+
+  // Ajout de l'écouteur d'événement pour la validation du formulaire
+  imageInput.addEventListener('change', checkForm);
+  nameInput.addEventListener('keyup', checkForm);
+  categorySelect.addEventListener('change', checkForm);
+
+  function checkForm() {
+    var imageInputValue = imageInput.value;
+    var nameInputValue = nameInput.value;
+    var categorySelectValue = categorySelect.value;
+
+    if (imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '') {
+      submitButton.removeAttribute('disabled');
+    } else {
+      submitButton.setAttribute('disabled', 'true');
+    }
+  }
+
   form.appendChild(titleLabel);
   form.appendChild(imageLabel);
   form.appendChild(imageInput);
@@ -186,4 +204,40 @@ function generateAddImageForm(addProjectDiv) {
   addProjectDiv.appendChild(form);
 }
 
-// Utilisation de la fonction pour générer le formulaire lorsqu'il est nécessaire
+
+// Appel de la fonction pour générer le formulaire d'ajout d'image
+const addProjectDiv = document.getElementById("addProjectDiv");
+generateAddImageForm(addProjectDiv);
+
+// Ajout d'un écouteur d'événement pour la soumission du formulaire
+const imageForm = document.getElementById("imageForm");
+
+imageForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  // Récupération des données du formulaire
+  const imageFile = document.getElementById("image").files[0];
+  const imageName = document.getElementById("name").value;
+  const imageCategory = document.getElementById("category").value;
+
+  // Création de l'objet FormData pour envoyer les fichiers et les autres données
+  const formData = new FormData();
+  formData.append("image", imageFile);
+  formData.append("name", imageName);
+  formData.append("category", imageCategory);
+
+  // Envoi de la requête API pour ajouter l'image
+  fetch('http://localhost:5678/api/images/add', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token'), // Inclure le jeton d'authentification
+    },
+    body: formData
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    // Gérer la réponse comme nécessaire
+    console.log(data);
+  })
+  .catch((error) => console.log(error));
+});
