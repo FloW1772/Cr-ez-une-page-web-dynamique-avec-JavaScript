@@ -24,6 +24,7 @@ if (isAdmin()) {
   addPicture.addEventListener('click',function(event){
     gallerymodal.classList.toggle('hidden')
     addProjectDiv.classList.toggle('hidden')
+    addPicture.style.display = 'none'
     
   })
   displayGalleryOnModale(gallerymodal)
