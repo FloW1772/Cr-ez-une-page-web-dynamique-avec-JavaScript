@@ -26,9 +26,22 @@ if (isAdmin()) {
     addProjectDiv.classList.toggle('hidden')
     addPicture.style.display = 'none'
     
+//     // Créer un nouveau bouton
+//     var newButton = document.createElement('button');
+//     newButton.textContent = 'Afficher le formulaire';
+    
+//     // Ajouter un gestionnaire d'événements pour le nouveau bouton
+//     newButton.addEventListener('click', function() {
+//         generateAddImageForm(addProjectDiv); // Appeler la fonction pour afficher le formulaire
+//         gallerymodal.classList.add('hidden'); // Rendre invisible la fenêtre modale
+//     });
+    
+//     // Ajouter le nouveau bouton à un élément existant (par exemple, le corps du document)
+//     document.body.appendChild(newButton);
+// });
   })
   displayGalleryOnModale(gallerymodal)
-  generateAddImageForm(addProjectDiv);
+  // generateAddImageForm(addProjectDiv);
   
   // showModal(); // Afficher la modale après avoir ajouté les éléments à la galerie
 }
@@ -100,11 +113,30 @@ fetch(`http://localhost:5678/api/works/${id}`,{
 })
 .catch((error)=>console.log(error))
 }
+function checkForm(imageInput, categorySelect, submitButton) {
+  let test=document.querySelector('#name')
+  console.log(imageInput)
+  console.log(test)
+  var imageInputValue = imageInput.value;
+  var nameInputValue = test.value;
+  var categorySelectValue = categorySelect.value;
 
+  console.log(imageInputValue)
+  console.log(nameInputValue)
+
+
+  console.log(imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '')
+
+  if (imageInputValue !== '' && nameInputValue !== '') {
+    submitButton.removeAttribute('disabled');
+  } else {
+    submitButton.setAttribute('disabled', 'true');
+  }
+}
 // Définition de la fonction pour générer le formulaire d'ajout d'image
 function generateAddImageForm(addProjectDiv) {
   var form = document.createElement('form');
-  form.setAttribute('action', 'http://localhost:5678/api/images/add'); // Mettez l'URL de l'API appropriée ici
+  form.setAttribute('action', ''); // Mettez l'URL de l'API appropriée ici
   form.setAttribute('method', 'POST');
   form.setAttribute('enctype', 'multipart/form-data');
   form.setAttribute('id', 'imageForm');
@@ -131,7 +163,7 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.setAttribute('type', 'text');
   nameInput.setAttribute('id', 'name');
   nameInput.setAttribute('name', 'name');
-  nameInput.setAttribute('onkeyup', 'checkForm()');
+  // nameInput.setAttribute('onkeyup', 'checkForm()');
   nameInput.setAttribute('required', 'true');
 
   var categoryLabel = document.createElement('label');
@@ -141,7 +173,7 @@ function generateAddImageForm(addProjectDiv) {
   var categorySelect = document.createElement('select');
   categorySelect.setAttribute('id', 'category');
   categorySelect.setAttribute('name', 'category');
-  categorySelect.setAttribute('onchange', 'checkForm()');
+  // categorySelect.setAttribute('onchange', 'checkForm()');
   categorySelect.setAttribute('required', 'true');
 
   var defaultOption = document.createElement('option');
@@ -173,21 +205,11 @@ function generateAddImageForm(addProjectDiv) {
 
 
   // Ajout de l'écouteur d'événement pour la validation du formulaire
-  imageInput.addEventListener('change', checkForm);
-  nameInput.addEventListener('keyup', checkForm);
-  categorySelect.addEventListener('change', checkForm);
+  imageInput.addEventListener('change', checkForm(imageInput, categorySelect, submitButton));
+  nameInput.addEventListener('keyup', checkForm(imageInput, categorySelect, submitButton));
+  categorySelect.addEventListener('change', checkForm(imageInput, categorySelect, submitButton));
 
-  function checkForm() {
-    var imageInputValue = imageInput.value;
-    var nameInputValue = nameInput.value;
-    var categorySelectValue = categorySelect.value;
 
-    if (imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '') {
-      submitButton.removeAttribute('disabled');
-    } else {
-      submitButton.setAttribute('disabled', 'true');
-    }
-  }
 
   form.appendChild(titleLabel);
   form.appendChild(imageLabel);
@@ -201,7 +223,7 @@ function generateAddImageForm(addProjectDiv) {
   form.appendChild(document.createElement('br'));
   form.appendChild(submitButton);
 
-  addProjectDiv.innerHTML = ''; // Nettoie le contenu précédent
+  // addProjectDiv.innerHTML = ''; // Nettoie le contenu précédent
   addProjectDiv.appendChild(form);
 }
 
@@ -224,11 +246,11 @@ imageForm.addEventListener("submit", function (event) {
   // Création de l'objet FormData pour envoyer les fichiers et les autres données
   const formData = new FormData();
   formData.append("image", imageFile);
-  formData.append("name", imageName);
+  formData.append("title", imageName);
   formData.append("category", imageCategory);
 
   // Envoi de la requête API pour ajouter l'image
-  fetch('http://localhost:5678/api/images/add', {
+  fetch('http://localhost:5678/api/works', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token'), // Inclure le jeton d'authentification
