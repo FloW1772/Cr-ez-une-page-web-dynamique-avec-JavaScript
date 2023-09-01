@@ -13,6 +13,26 @@ if (isAdmin()) {
 
 
 
+// Sélectionnez le bouton avec la classe "return-back"
+const returnBackButton = document.querySelector('.return-back');
+
+// Sélectionnez l'élément que vous voulez rendre invisible lorsque le bouton est cliqué
+const addProject = document.querySelector('.add-project');
+const modalContainerGallery = document.querySelector('.mdal-container-gallery');
+
+// Ajoutez un écouteur d'événements au bouton
+returnBackButton.addEventListener('click', function() {
+  // Ajoutez ou supprimez la classe "hidden" pour rendre l'élément invisible ou visible
+  addProject.classList.toggle('hidden');
+  modalContainerGallery.classList.remove('hidden');
+  
+  // Rendez le bouton "ajouter une photo" visible à nouveau
+  addPicture.classList.remove('hidden'); // Retirez la classe "hidden" de l'élément add-picture
+});
+
+
+
+
   modifyBtn.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
 
@@ -26,19 +46,7 @@ if (isAdmin()) {
     addProjectDiv.classList.toggle('hidden')
     addPicture.style.display = 'none'
     
-//     // Créer un nouveau bouton
-//     var newButton = document.createElement('button');
-//     newButton.textContent = 'Afficher le formulaire';
-    
-//     // Ajouter un gestionnaire d'événements pour le nouveau bouton
-//     newButton.addEventListener('click', function() {
-//         generateAddImageForm(addProjectDiv); // Appeler la fonction pour afficher le formulaire
-//         gallerymodal.classList.add('hidden'); // Rendre invisible la fenêtre modale
-//     });
-    
-//     // Ajouter le nouveau bouton à un élément existant (par exemple, le corps du document)
-//     document.body.appendChild(newButton);
-// });
+
   })
   displayGalleryOnModale(gallerymodal)
   // generateAddImageForm(addProjectDiv);
