@@ -5,7 +5,7 @@ if (isAdmin()) {
   const myModal = document.querySelector ('#myModal')
   const addPicture = document.querySelector ('.add-picture')
   const delPicture = document.querySelector ('.del-picture')
-  const modalTitle = document.querySelector ('modal-title')
+  const modalTitle = document.querySelector ('.modal-title')
   const backgroundgray = document.querySelector('.background-gray')
   modifyBtn.setAttribute('id', 'modify-btn');
   modifyBtn.innerHTML = `<i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>`;
@@ -54,7 +54,7 @@ returnBackButton.addEventListener('click', function() {
     gallerymodal.classList.toggle('hidden')
     addProjectDiv.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
-    
+    modalTitle.style.display = 'none';
     addPicture.classList.toggle('hidden')
     addPicture.style.display = 'none'
     
