@@ -262,16 +262,16 @@ form {
   }
   
   /* Style pour la modale */
-  .modale {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: white;
-    transform: translate(-50%, -50%);
-    min-height: 600px; /* Ajustez la hauteur minimale selon vos besoins */
-    min-width: 60%; /* Ajustez la largeur minimale selon vos besoins */
-}
-
+  .modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
   
   .modal-content {
 	position: absolute;
@@ -384,8 +384,8 @@ h2 {
 	left: 50%;
 	background-color: white;
 	transform: translate(-50%,-50%);
-	height: 400px;
-	width: 40%;
+	height: 650px;
+	width: 50%;
 }
 .display-figure-modal{
 	height: 160px;
@@ -396,18 +396,20 @@ h2 {
 	width: 100%;
 }
 
-.modal-container-gallery{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	width: 90%;
-	margin: 0 auto;
-
-
+.modal-container-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto 0; /* Ajoutez une marge de 20px en haut (et 0px en bas) */
 }
+
+
 .display-figure-modal {
     position: relative;
     display: inline-block; /* Pour que le conteneur prenne la taille des boutons */
+	margin-bottom: 75px; /* Ajoute un espace de 10 pixels vers le bas */
+
 }
 
 .btn-mouv {
@@ -420,6 +422,26 @@ h2 {
     top: 0;
     right: 0;
 }
+
+.add-picture{
+	margin-left: 40%; /* Ajoute un espace de 20 pixels à gauche */
+	display: block;
+}
+
+.del-picture{
+	display: block;
+	margin-left: 39.5%;
+	margin-top: 20px;
+}
+
+.close {
+	font-size: 24px;
+	position: absolute;
+	top: calc(50% - 305px); 
+	right: calc(50% - 345px); 
+  }
+  
+
 
 .hidden {
 	display: none;

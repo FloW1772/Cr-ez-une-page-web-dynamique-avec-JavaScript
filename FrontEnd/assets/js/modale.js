@@ -10,6 +10,7 @@ if (isAdmin()) {
   portfolioTitle.appendChild(modifyBtn);
   let addProjectDiv = document.querySelector('.add-project.hidden');
   const gallerymodal = document.querySelector('.modal-container-gallery')
+  const closeModalButton = document.getElementById('closeModal'); 
 
 
 
@@ -41,6 +42,10 @@ returnBackButton.addEventListener('click', function() {
   backgroundgray.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
   })
+  closeModalButton.addEventListener('click', function(event) {
+    myModal.classList.toggle('hidden');
+})
+  
   addPicture.addEventListener('click',function(event){
     gallerymodal.classList.toggle('hidden')
     addProjectDiv.classList.toggle('hidden')
