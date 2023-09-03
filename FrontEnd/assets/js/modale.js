@@ -4,6 +4,8 @@ if (isAdmin()) {
   const modifyBtn = document.createElement("button");
   const myModal = document.querySelector ('#myModal')
   const addPicture = document.querySelector ('.add-picture')
+  const delPicture = document.querySelector ('.del-picture')
+  const modalTitle = document.querySelector ('modal-title')
   const backgroundgray = document.querySelector('.background-gray')
   modifyBtn.setAttribute('id', 'modify-btn');
   modifyBtn.innerHTML = `<i class="fa-regular fa-pen-to-square"></i> <span>modifier</span>`;
@@ -19,7 +21,7 @@ const returnBackButton = document.querySelector('.return-back');
 
 // Sélectionnez l'élément que vous voulez rendre invisible lorsque le bouton est cliqué
 const addProject = document.querySelector('.add-project');
-const modalContainerGallery = document.querySelector('.mdal-container-gallery');
+const modalContainerGallery = document.querySelector('.modal-container-gallery');
 
 // Ajoutez un écouteur d'événements au bouton
 returnBackButton.addEventListener('click', function() {
@@ -29,6 +31,8 @@ returnBackButton.addEventListener('click', function() {
   
   // Rendez le bouton "ajouter une photo" visible à nouveau
   addPicture.classList.remove('hidden'); // Retirez la classe "hidden" de l'élément add-picture
+  addPicture.style.display = 'none'
+
 });
 
 
@@ -49,6 +53,9 @@ returnBackButton.addEventListener('click', function() {
   addPicture.addEventListener('click',function(event){
     gallerymodal.classList.toggle('hidden')
     addProjectDiv.classList.toggle('hidden')
+    delPicture.classList.toggle('hidden')
+    
+    addPicture.classList.toggle('hidden')
     addPicture.style.display = 'none'
     
 
@@ -155,7 +162,7 @@ function generateAddImageForm(addProjectDiv) {
   form.setAttribute('id', 'imageForm');
 
   var titleLabel = document.createElement('h2');
-  titleLabel.textContent = 'Ajouter une image';
+  titleLabel.textContent = 'Ajout photo';
 
   var imageLabel = document.createElement('label');
   imageLabel.setAttribute('for', 'image');
@@ -214,7 +221,15 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.setAttribute('id', 'submitBtn');
   submitButton.setAttribute('name', 'submit');
   submitButton.setAttribute('disabled', 'true');
-  submitButton.textContent = 'Ajouter l\'image';
+  submitButton.style.fontFamily = 'Syne';
+  submitButton.style.fontWeight = '700';
+  
+  submitButton.style.margin = '2em auto';
+  submitButton.style.width = '190px';
+  submitButton.style.textAlign = 'center';
+  submitButton.style.borderRadius = '60px';
+  submitButton.style.height = '30px';
+  submitButton.textContent = 'Valider';
 
 
   // Ajout de l'écouteur d'événement pour la validation du formulaire
