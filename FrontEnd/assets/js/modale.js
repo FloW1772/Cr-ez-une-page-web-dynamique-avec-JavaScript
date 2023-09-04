@@ -177,7 +177,7 @@ function generateAddImageForm(addProjectDiv) {
 
   var nameLabel = document.createElement('label');
   nameLabel.setAttribute('for', 'name');
-  nameLabel.textContent = 'Nom de l\'image :';
+  nameLabel.textContent = 'Titre :';
 
   var nameInput = document.createElement('input');
   nameInput.setAttribute('type', 'text');
