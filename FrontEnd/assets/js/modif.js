@@ -6,16 +6,11 @@ function isAdmin() {
 
 // Fonction pour activer le mode administrateur
 function activerModeAdministrateur() {
-  // Ajouter la barre noire en modifiant le style de la page
-  const iconElement = document.createElement("i");
-  iconElement.className = "far fa-pen-to-square";
-
-  // Ajouter l'élément <i> à l'intérieur de la div appropriée
+  // Supprimer la classe "hidden" pour afficher la barre noire
   const blackBar = document.querySelector(".black-bar");
-  blackBar.appendChild(iconElement);
-
-  // Supprimer la classe "hidden" pour afficher l'icône
   blackBar.classList.remove("hidden");
+}
+
 
   // Récupérer tous les boutons existants sur la page
   const allCategoriesFilters = document.querySelector('.categories-filters');
@@ -43,7 +38,7 @@ function activerModeAdministrateur() {
   
   // Mettez ici le code pour activer le mode administrateur, par exemple en affichant des fonctionnalités supplémentaires ou en modifiant l'apparence de l'interface.
   console.log('Mode administrateur activé.');
-}
+
 
 // Vérifiez si l'utilisateur est un administrateur et activez le mode administrateur si c'est le cas
 if (isAdmin()) {
