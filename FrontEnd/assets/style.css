@@ -484,6 +484,17 @@ h2 {
 	border: none
 }
 
+#name-input {
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#category-select {
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+
 .hidden {
 	display: none;
   }

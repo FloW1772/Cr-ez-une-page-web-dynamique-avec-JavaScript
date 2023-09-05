@@ -30,8 +30,9 @@ returnBackButton.addEventListener('click', function() {
   modalContainerGallery.classList.remove('hidden');
   
   // Rendez le bouton "ajouter une photo" visible à nouveau
-  addPicture.classList.remove('hidden'); // Retirez la classe "hidden" de l'élément add-picture
-  addPicture.style.display = 'none'
+  addPicture.classList.toggle('hidden'); // Retirez la classe "hidden" de l'élément add-picture
+  delPicture.classList.toggle('hidden');
+  // addPicture.style.display = 'none'
 
 });
 
@@ -40,6 +41,10 @@ returnBackButton.addEventListener('click', function() {
 
   modifyBtn.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
+    const addPicture = document.querySelector ('.add-picture')
+    const delPicture = document.querySelector ('.del-picture')
+    addPicture.classList.toggle('hidden'); // Retirez la classe "hidden" de l'élément add-picture
+    delPicture.classList.toggle('hidden');
 
   })
 
@@ -56,7 +61,6 @@ returnBackButton.addEventListener('click', function() {
     delPicture.classList.toggle('hidden')
     modalTitle.style.display = 'none';
     addPicture.classList.toggle('hidden')
-    addPicture.style.display = 'none'
     
 
   })
@@ -133,26 +137,7 @@ fetch(`http://localhost:5678/api/works/${id}`,{
 })
 .catch((error)=>console.log(error))
 }
-function checkForm(imageInput, categorySelect, submitButton) {
-  let test=document.querySelector('#name')
-  console.log(imageInput)
-  console.log(test)
-  var imageInputValue = imageInput.value;
-  var nameInputValue = test.value;
-  var categorySelectValue = categorySelect.value;
 
-  console.log(imageInputValue)
-  console.log(nameInputValue)
-
-
-  console.log(imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '')
-
-  if (imageInputValue !== '' && nameInputValue !== '') {
-    submitButton.removeAttribute('disabled');
-  } else {
-    submitButton.setAttribute('disabled', 'true');
-  }
-}
 // Définition de la fonction pour générer le formulaire d'ajout d'image
 function generateAddImageForm(addProjectDiv) {
   var form = document.createElement('form');
@@ -165,34 +150,34 @@ function generateAddImageForm(addProjectDiv) {
   titleLabel.textContent = 'Ajout photo';
 
   var imageLabel = document.createElement('label');
-  imageLabel.setAttribute('for', 'image');
+  imageLabel.setAttribute('for', 'project-image');
   imageLabel.textContent = 'Choisir une image :';
 
   var imageInput = document.createElement('input');
   imageInput.setAttribute('type', 'file');
-  imageInput.setAttribute('id', 'image');
-  imageInput.setAttribute('name', 'image');
+  imageInput.setAttribute('id', 'project-image');
+  imageInput.setAttribute('name', 'project-image');
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
 
   var nameLabel = document.createElement('label');
-  nameLabel.setAttribute('for', 'name');
+  nameLabel.setAttribute('for', 'project-name');
   nameLabel.textContent = 'Titre :';
 
   var nameInput = document.createElement('input');
   nameInput.setAttribute('type', 'text');
-  nameInput.setAttribute('id', 'name');
-  nameInput.setAttribute('name', 'name');
+  nameInput.setAttribute('id', 'project-name');
+  nameInput.setAttribute('name', 'project-name');
   // nameInput.setAttribute('onkeyup', 'checkForm()');
   nameInput.setAttribute('required', 'true');
 
   var categoryLabel = document.createElement('label');
-  categoryLabel.setAttribute('for', 'category');
+  categoryLabel.setAttribute('for', 'category-select');
   categoryLabel.textContent = 'Catégorie :';
 
   var categorySelect = document.createElement('select');
-  categorySelect.setAttribute('id', 'category');
-  categorySelect.setAttribute('name', 'category');
+  categorySelect.setAttribute('id', 'category-select');
+  categorySelect.setAttribute('name', 'category-select');
   // categorySelect.setAttribute('onchange', 'checkForm()');
   categorySelect.setAttribute('required', 'true');
 
@@ -202,17 +187,17 @@ function generateAddImageForm(addProjectDiv) {
   categorySelect.appendChild(defaultOption);
 
   var objetsOption = document.createElement('option');
-  objetsOption.setAttribute('value', 'objets');
+  objetsOption.setAttribute('value', 1);
   objetsOption.textContent = 'Objets';
   categorySelect.appendChild(objetsOption);
 
   var appartementsOption = document.createElement('option');
-  appartementsOption.setAttribute('value', 'appartements');
+  appartementsOption.setAttribute('value', 2);
   appartementsOption.textContent = 'Appartements';
   categorySelect.appendChild(appartementsOption);
 
   var hotelsOption = document.createElement('option');
-  hotelsOption.setAttribute('value', 'hotels');
+  hotelsOption.setAttribute('value', 3);
   hotelsOption.textContent = 'Hotels & restaurants';
   categorySelect.appendChild(hotelsOption);
 
@@ -231,11 +216,6 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.style.height = '30px';
   submitButton.textContent = 'Valider';
 
-
-  // Ajout de l'écouteur d'événement pour la validation du formulaire
-  imageInput.addEventListener('change', checkForm(imageInput, categorySelect, submitButton));
-  nameInput.addEventListener('keyup', checkForm(imageInput, categorySelect, submitButton));
-  categorySelect.addEventListener('change', checkForm(imageInput, categorySelect, submitButton));
 
 
 
@@ -267,15 +247,17 @@ imageForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Récupération des données du formulaire
-  const imageFile = document.getElementById("image").files[0];
-  const imageName = document.getElementById("name").value;
-  const imageCategory = document.getElementById("category").value;
-
+  const imageFile = document.getElementById("project-image").files[0];
+  const imageName = document.getElementById("project-name").value;
+  const imageCategory = document.getElementById("category-select").value;
+  let categoryNumber =  parseInt(imageCategory)
+console.log(categoryNumber)
+// debugger
   // Création de l'objet FormData pour envoyer les fichiers et les autres données
   const formData = new FormData();
   formData.append("image", imageFile);
   formData.append("title", imageName);
-  formData.append("category", imageCategory);
+  formData.append("category", categoryNumber);
 
   // Envoi de la requête API pour ajouter l'image
   fetch('http://localhost:5678/api/works', {
@@ -292,3 +274,41 @@ imageForm.addEventListener("submit", function (event) {
   })
   .catch((error) => console.log(error));
 });
+
+let addProjectImage = document.querySelector('#project-image')
+let addProjectName = document.querySelector('#project-name')
+let addProjectCategory = document.querySelector('#category-select')
+let submitButton = document.querySelector('#submitBtn')
+  // Ajout de l'écouteur d'événement pour la validation du formulaire
+  addProjectImage.addEventListener('change',function(event){ 
+  checkForm(addProjectImage, addProjectName, addProjectCategory, submitButton)
+});
+  addProjectName.addEventListener('keyup', function(event){
+  checkForm(addProjectImage,addProjectName, addProjectCategory, submitButton)
+});
+  addProjectCategory.addEventListener('change',function(event){
+   checkForm(addProjectImage,addProjectName, addProjectCategory, submitButton)
+  });
+
+  function checkForm(imageInput, nameSelect, categorySelect, submitButton) {
+    // let test=document.querySelector('#name')
+    console.log(imageInput)
+    console.log(nameSelect)
+    console.log(categorySelect)
+    // console.log(test)
+    var imageInputValue = imageInput.value;
+    var nameInputValue = nameSelect.value;
+    var categorySelectValue = categorySelect.value;
+  
+    console.log(imageInputValue)
+    console.log(nameInputValue)
+  
+  
+    console.log(imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '')
+  
+    if (imageInputValue !== '' && nameInputValue !== '') {
+      submitButton.removeAttribute('disabled');
+    } else {
+      submitButton.setAttribute('disabled', 'true');
+    }
+  }
