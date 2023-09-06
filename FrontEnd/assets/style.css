@@ -437,7 +437,7 @@ h2 {
 .btn-mouv {
     position: absolute;
     top: 0;
-    right: 10px;
+    right: 38px;
     color: white;
     background-color: black;
     opacity: 0; /* Définir l'opacité à 0 par défaut pour les cacher */
