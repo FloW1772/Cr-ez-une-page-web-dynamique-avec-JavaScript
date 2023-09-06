@@ -28,10 +28,12 @@ returnBackButton.addEventListener('click', function() {
   // Ajoutez ou supprimez la classe "hidden" pour rendre l'élément invisible ou visible
   addProject.classList.toggle('hidden');
   modalContainerGallery.classList.remove('hidden');
+
   
   // Rendez le bouton "ajouter une photo" visible à nouveau
   addPicture.classList.toggle('hidden'); // Retirez la classe "hidden" de l'élément add-picture
   delPicture.classList.toggle('hidden');
+  modalTitle.classList.toggle('hidden');
   // addPicture.style.display = 'none'
 
 });
@@ -50,16 +52,21 @@ returnBackButton.addEventListener('click', function() {
 
   backgroundgray.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
+    addPicture.classList.toggle('hidden')
+    delPicture.classList.toggle('hidden')
+
   })
   closeModalButton.addEventListener('click', function(event) {
     myModal.classList.toggle('hidden');
+    addPicture.classList.toggle('hidden')
+    delPicture.classList.toggle('hidden')
 })
   
   addPicture.addEventListener('click',function(event){
     gallerymodal.classList.toggle('hidden')
     addProjectDiv.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
-    modalTitle.style.display = 'none';
+    modalTitle.classList.toggle('hidden');
     addPicture.classList.toggle('hidden')
     
 
