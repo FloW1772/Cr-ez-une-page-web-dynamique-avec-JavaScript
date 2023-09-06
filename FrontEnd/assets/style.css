@@ -437,12 +437,23 @@ h2 {
 .btn-mouv {
     position: absolute;
     top: 0;
-    right: 30%;
+    right: 10px;
+    color: white;
+    background-color: black;
+    opacity: 0; /* Définir l'opacité à 0 par défaut pour les cacher */
+    transition: opacity 0.3s ease; /* Ajouter une transition pour une animation fluide */
 }
+
+.btn-mouv:hover {
+    opacity: 1; /* Définir l'opacité à 1 lorsqu'on passe la souris dessus */
+}
+
 .btn-trash {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 6px;
+	color: white;
+	background-color: black;
 }
 
 .add-picture{

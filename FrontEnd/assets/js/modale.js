@@ -102,7 +102,7 @@ async function displayGalleryOnModale (gallerymodal){
       // Créer les boutons cliquables sous les images
       let button1 = document.createElement('button');
       button1.innerHTML = `<i class="fa-solid fa-up-down-left-right"></i>`;
-      button1.setAttribute('class','btn-mouv hidden')
+      button1.setAttribute('class','btn-mouv')
       button1.addEventListener('click', () => {
           // Code à exécuter lorsque le bouton 1 est cliqué
       });
