@@ -158,7 +158,7 @@ function generateAddImageForm(addProjectDiv) {
 
   var imageLabel = document.createElement('label');
   imageLabel.setAttribute('for', 'project-image');
-  imageLabel.textContent = 'Choisir une image :';
+
 
   var imageInput = document.createElement('input');
   imageInput.setAttribute('type', 'file');
@@ -177,6 +177,13 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.setAttribute('name', 'project-name');
   // nameInput.setAttribute('onkeyup', 'checkForm()');
   nameInput.setAttribute('required', 'true');
+  nameInput.style.fontFamily = 'Syne';
+  nameInput.style.fontWeight = '700';
+  nameInput.style.margin = '2em auto';
+  nameInput.style.width = '190px';
+  nameInput.style.height = '30px';
+  nameInput.style.borderColor = 'white';
+  nameInput.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
 
   var categoryLabel = document.createElement('label');
   categoryLabel.setAttribute('for', 'category-select');
@@ -187,6 +194,12 @@ function generateAddImageForm(addProjectDiv) {
   categorySelect.setAttribute('name', 'category-select');
   // categorySelect.setAttribute('onchange', 'checkForm()');
   categorySelect.setAttribute('required', 'true');
+  categorySelect.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+  categorySelect.style.width = '190px';
+  categorySelect.style.height = '30px';
+  categorySelect.style.borderColor = 'white';
+  categorySelect.style.marginTop = '20px';
+
 
   var defaultOption = document.createElement('option');
   defaultOption.setAttribute('value', '');
@@ -215,6 +228,7 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.setAttribute('disabled', 'true');
   submitButton.style.fontFamily = 'Syne';
   submitButton.style.fontWeight = '700';
+  
   
   submitButton.style.margin = '2em auto';
   submitButton.style.width = '190px';
@@ -315,7 +329,10 @@ let submitButton = document.querySelector('#submitBtn')
   
     if (imageInputValue !== '' && nameInputValue !== '') {
       submitButton.removeAttribute('disabled');
+      submitButton.style.backgroundColor = '#1D6154';
+      submitButton.style.color = 'white'
     } else {
       submitButton.setAttribute('disabled', 'true');
+      submitButton.style.backgroundColor = ''; 
     }
   }
