@@ -25,6 +25,21 @@ async function getCategories() {
   }
 }
 
+// Filtrer les projets par catégorie lorsque le bouton de catégorie est cliqué
+function filterProjectsByCategory(category) {
+  let projectsInGallery = document.querySelectorAll('.gallery figure');
+
+  for (let projectInGallery of projectsInGallery) {
+    let projectCategoryId = parseInt(projectInGallery.getAttribute('data-category-id'));
+
+    if (category === 'Tous' || category.name === categories[projectCategoryId].name) {
+      projectInGallery.style.display = 'block'; // Afficher les projets de la catégorie sélectionnée
+    } else {
+      projectInGallery.style.display = 'none'; // Masquer les projets qui n'appartiennent pas à la catégorie sélectionnée
+    }
+  }
+}
+
 // Afficher les projets dans la galerie
 function displayProjects() {
   for (let project of projects) {
@@ -44,21 +59,6 @@ function displayProjects() {
     figure.appendChild(titleElement);
 
     gallery.appendChild(figure);
-  }
-}
-
-// Filtrer les projets par catégorie lorsque le bouton de catégorie est cliqué pour le rendre plus modulaire
-function filterProjectsByCategory(category) {
-  let projectsInGallery = document.querySelectorAll('.gallery figure');
-
-  for (let projectInGallery of projectsInGallery) {
-    let projectCategoryId = parseInt(projectInGallery.getAttribute('data-category-id'));
-
-    if (category === 'Tous' || category.id === projectCategoryId) {
-      projectInGallery.style.display = 'block'; // Afficher les projets de la catégorie sélectionnée
-    } else {
-      projectInGallery.style.display = 'none'; // Masquer les projets qui n'appartiennent pas à la catégorie sélectionnée
-    }
   }
 }
 

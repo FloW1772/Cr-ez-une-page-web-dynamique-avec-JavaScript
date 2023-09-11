@@ -2,10 +2,14 @@
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+  // Empêche l'envoi du formulaire par défaut
+  event.preventDefault();
 
+  // Récupérer les valeurs des champs email et password
   const email = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  
+  // Expression régulière pour valider l'adresse e-mail
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
   // Vérifier les champs
