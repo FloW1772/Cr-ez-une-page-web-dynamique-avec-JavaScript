@@ -15,7 +15,6 @@ if (isAdmin()) {
   const closeModalButton = document.getElementById('closeModal'); 
 
 
-
 // Sélectionnez le bouton avec la classe "return-back"
 const returnBackButton = document.querySelector('.return-back');
 
@@ -69,8 +68,7 @@ imageInput.addEventListener('change', function(event) {
     addImageButton.classList.add('hidden');
   }
 });
-})
-
+} )
 
   modifyBtn.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
@@ -130,7 +128,6 @@ imageInput.addEventListener('change', function(event) {
   
   // showModal(); // Afficher la modale après avoir ajouté les éléments à la galerie
 }
-
 
 async function displayGalleryOnModale (gallerymodal){
   // Supposons que ce code soit à l'intérieur de la boucle qui gère l'ouverture de la modale pour chaque projet
@@ -213,7 +210,6 @@ function generateAddImageForm(addProjectDiv) {
   var imageLabel = document.createElement('label');
   imageLabel.setAttribute('for', 'project-image');
 
-
   var imageInput = document.createElement('input');
   imageInput.setAttribute('type', 'file');
   imageInput.setAttribute('id', 'project-image');
@@ -253,7 +249,6 @@ function generateAddImageForm(addProjectDiv) {
   categorySelect.style.height = '30px';
   categorySelect.style.borderColor = 'white';
   categorySelect.style.marginTop = '20px';
-
 
   var defaultOption = document.createElement('option');
   defaultOption.setAttribute('value', '');
@@ -302,7 +297,6 @@ function generateAddImageForm(addProjectDiv) {
 
   form.appendChild(addImageButton);
 
-
   form.appendChild(titleLabel);
   form.appendChild(imageLabel);
   form.appendChild(imageInput);
@@ -318,7 +312,6 @@ function generateAddImageForm(addProjectDiv) {
   // addProjectDiv.innerHTML = ''; // Nettoie le contenu précédent
   addProjectDiv.appendChild(form);
 }
-
 
 // Appel de la fonction pour générer le formulaire d'ajout d'image
 const addProjectDiv = document.getElementById("addProjectDiv");
@@ -400,3 +393,4 @@ let submitButton = document.querySelector('#submitBtn')
       submitButton.style.backgroundColor = ''; 
     }
   }
+
