@@ -14,6 +14,9 @@ if (isAdmin()) {
   const gallerymodal = document.querySelector('.modal-container-gallery')
   const closeModalButton = document.getElementById('closeModal'); 
 
+  document.addEventListener('DOMContentLoaded', function() {
+    
+  });
 
 // Sélectionnez le bouton avec la classe "return-back"
 const returnBackButton = document.querySelector('.return-back');
@@ -36,39 +39,7 @@ returnBackButton.addEventListener('click', function() {
   // addPicture.style.display = 'none'
 
 });
-document.addEventListener('DOMContentLoaded', function() {
-const imagePreview = document.createElement("div");
-imagePreview.setAttribute("id", "image-preview");
-imagePreview.classList.add("hidden");
-addProjectDiv.appendChild(imagePreview);
 
-// Ajouter l'écouteur d'événement pour le changement de la sélection de fichier
-var imageInput = document.getElementById('project-image');
-imageInput.addEventListener('change', function(event) {
-  var imagePreview = document.getElementById('image-preview');
-  var addImageButton = document.querySelector('.add-image-button');
-
-  var file = event.target.files[0];
-  if (file) {
-    var reader = new FileReader();
-
-    reader.onload = function(e) {
-      var img = new Image();
-      img.src = e.target.result;
-
-      while (imagePreview.firstChild) {
-        imagePreview.removeChild(imagePreview.firstChild);
-      }
-
-      imagePreview.appendChild(img);
-    }
-
-    reader.readAsDataURL(file);
-    imagePreview.classList.remove('hidden');
-    addImageButton.classList.add('hidden');
-  }
-});
-} )
 
   modifyBtn.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
@@ -99,17 +70,17 @@ imageInput.addEventListener('change', function(event) {
     addPicture.classList.toggle('hidden')
     
     function modifierInput() {
-      var inputElement = document.getElementById("project-image");
-      var filePreview = document.querySelector(".preview");
-      var openFileInputButton = document.getElementById("openFileInput");
+      let inputElement = document.getElementById("project-image");
+      let filePreview = document.querySelector(".preview");
+      let openFileInputButton = document.getElementById("openFileInput");
   
       openFileInputButton.addEventListener("click", function() {
         inputElement.click();
       });
   
       inputElement.addEventListener("change", function() {
-        var file = inputElement.files[0];
-        var reader = new FileReader();
+        let file = inputElement.files[0];
+        let reader = new FileReader();
   
         reader.onload = function() {
           filePreview.innerHTML = '<img src="' + reader.result + '" alt="Aperçu de l\'image">';
@@ -132,7 +103,6 @@ imageInput.addEventListener('change', function(event) {
 async function displayGalleryOnModale (gallerymodal){
   // Supposons que ce code soit à l'intérieur de la boucle qui gère l'ouverture de la modale pour chaque projet
   await getProjects();
-  console.log(projects)
   for (let project of projects) {
       // openModal(project.imageUrl, project.title);
 
@@ -189,39 +159,42 @@ fetch(`http://localhost:5678/api/works/${id}`,{
   }
 })
 .then((response)=>{
-  console.log(response)
   displayProjects()
   displayGalleryOnModale()
 })
-.catch((error)=>console.log(error))
 }
 
 // Définition de la fonction pour générer le formulaire d'ajout d'image
 function generateAddImageForm(addProjectDiv) {
-  var form = document.createElement('form');
+  let form = document.createElement('form');
   form.setAttribute('action', ''); // Mettez l'URL de l'API appropriée ici
   form.setAttribute('method', 'POST');
   form.setAttribute('enctype', 'multipart/form-data');
   form.setAttribute('id', 'imageForm');
 
-  var titleLabel = document.createElement('h2');
+  let titleLabel = document.createElement('h2');
   titleLabel.textContent = 'Ajout photo';
+  titleLabel.classList.add('custom-title');
 
-  var imageLabel = document.createElement('label');
+  let imageLabel = document.createElement('label');
   imageLabel.setAttribute('for', 'project-image');
 
-  var imageInput = document.createElement('input');
+  let imageInput = document.createElement('input');
   imageInput.setAttribute('type', 'file');
   imageInput.setAttribute('id', 'project-image');
   imageInput.setAttribute('name', 'project-image');
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
+  // <div id="image-preview" class="hidden"></div>
+  let imagePreview = document.createElement('div')
+  imagePreview.setAttribute('id','image-preview')
+  imagePreview.classList.add('hidden')
 
-  var nameLabel = document.createElement('label');
+  let nameLabel = document.createElement('label');
   nameLabel.setAttribute('for', 'project-name');
   nameLabel.textContent = 'Titre :';
 
-  var nameInput = document.createElement('input');
+  let nameInput = document.createElement('input');
   nameInput.setAttribute('type', 'text');
   nameInput.setAttribute('id', 'project-name');
   nameInput.setAttribute('name', 'project-name');
@@ -235,11 +208,11 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.style.borderColor = 'white';
   nameInput.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
 
-  var categoryLabel = document.createElement('label');
+  let categoryLabel = document.createElement('label');
   categoryLabel.setAttribute('for', 'category-select');
   categoryLabel.textContent = 'Catégorie :';
 
-  var categorySelect = document.createElement('select');
+  let categorySelect = document.createElement('select');
   categorySelect.setAttribute('id', 'category-select');
   categorySelect.setAttribute('name', 'category-select');
   // categorySelect.setAttribute('onchange', 'checkForm()');
@@ -250,27 +223,27 @@ function generateAddImageForm(addProjectDiv) {
   categorySelect.style.borderColor = 'white';
   categorySelect.style.marginTop = '20px';
 
-  var defaultOption = document.createElement('option');
+  let defaultOption = document.createElement('option');
   defaultOption.setAttribute('value', '');
   defaultOption.textContent = 'Sélectionner une catégorie';
   categorySelect.appendChild(defaultOption);
 
-  var objetsOption = document.createElement('option');
+  let objetsOption = document.createElement('option');
   objetsOption.setAttribute('value', 1);
   objetsOption.textContent = 'Objets';
   categorySelect.appendChild(objetsOption);
 
-  var appartementsOption = document.createElement('option');
+  let appartementsOption = document.createElement('option');
   appartementsOption.setAttribute('value', 2);
   appartementsOption.textContent = 'Appartements';
   categorySelect.appendChild(appartementsOption);
 
-  var hotelsOption = document.createElement('option');
+  let hotelsOption = document.createElement('option');
   hotelsOption.setAttribute('value', 3);
   hotelsOption.textContent = 'Hotels & restaurants';
   categorySelect.appendChild(hotelsOption);
 
-  var submitButton = document.createElement('button');
+  let submitButton = document.createElement('button');
   submitButton.setAttribute('type', 'submit');
   submitButton.setAttribute('id', 'submitBtn');
   submitButton.setAttribute('name', 'submit');
@@ -286,20 +259,21 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.style.height = '30px';
   submitButton.textContent = 'Valider';
 
-  var addImageButton = document.createElement('button');
-  addImageButton.setAttribute('type', 'button');
-  addImageButton.textContent = 'Ajouter une image';
-  addImageButton.classList.add('add-image-button');
+  // let imageInput = document.createElement('button');
+  // imageInput.setAttribute('type', 'button');
+  // imageInput.textContent = 'Ajouter une image';
+  // imageInput.classList.add('project-image');
 
-  addImageButton.addEventListener('click', function() {
-    imageInput.click();
-  });
+  // imageInput.addEventListener('click', function() {
+  //   imageInput.click();
+  // });
 
-  form.appendChild(addImageButton);
+  // form.appendChild(imageInput);
 
   form.appendChild(titleLabel);
   form.appendChild(imageLabel);
   form.appendChild(imageInput);
+  form.appendChild(imagePreview);
   form.appendChild(document.createElement('br'));
   form.appendChild(nameLabel);
   form.appendChild(nameInput);
@@ -328,8 +302,6 @@ imageForm.addEventListener("submit", function (event) {
   const imageName = document.getElementById("project-name").value;
   const imageCategory = document.getElementById("category-select").value;
   let categoryNumber =  parseInt(imageCategory)
-console.log(categoryNumber)
-// debugger
   // Création de l'objet FormData pour envoyer les fichiers et les autres données
   const formData = new FormData();
   formData.append("image", imageFile);
@@ -347,9 +319,7 @@ console.log(categoryNumber)
   .then((response) => response.json())
   .then((data) => {
     // Gérer la réponse comme nécessaire
-    console.log(data);
   })
-  .catch((error) => console.log(error));
 });
 
 let addProjectImage = document.querySelector('#project-image')
@@ -370,20 +340,11 @@ let submitButton = document.querySelector('#submitBtn')
 
   function checkForm(imageInput, nameSelect, categorySelect, submitButton) {
     // let test=document.querySelector('#name')
-    console.log(imageInput)
-    console.log(nameSelect)
-    console.log(categorySelect)
-    // console.log(test)
-    var imageInputValue = imageInput.value;
-    var nameInputValue = nameSelect.value;
-    var categorySelectValue = categorySelect.value;
-  
-    console.log(imageInputValue)
-    console.log(nameInputValue)
-  
-  
-    console.log(imageInputValue !== '' && nameInputValue !== '' && categorySelectValue !== '')
-  
+
+    let imageInputValue = imageInput.value;
+    let nameInputValue = nameSelect.value;
+    let categorySelectValue = categorySelect.value;
+    
     if (imageInputValue !== '' && nameInputValue !== '') {
       submitButton.removeAttribute('disabled');
       submitButton.style.backgroundColor = '#1D6154';
@@ -393,4 +354,36 @@ let submitButton = document.querySelector('#submitBtn')
       submitButton.style.backgroundColor = ''; 
     }
   }
-
+  document.addEventListener('DOMContentLoaded', function() {
+    const imagePreview = document.createElement("div");
+    imagePreview.setAttribute("id", "image-preview");
+    imagePreview.classList.add("hidden");
+    addProjectDiv.appendChild(imagePreview);
+    
+    // Ajouter l'écouteur d'événement pour le changement de la sélection de fichier
+    let imageInput = document.getElementById('project-image');
+    imageInput.addEventListener('change', function(event) {
+      let imagePreview = document.getElementById('image-preview');
+      let imageInput = document.querySelector('#project-image');
+    
+      let file = event.target.files[0];
+      if (file) {
+        let reader = new FileReader();
+    
+        reader.onload = function(e) {
+          let img = new Image();
+          img.src = e.target.result;
+    
+          while (imagePreview.firstChild) {
+            imagePreview.removeChild(imagePreview.firstChild);
+          }
+    
+          imagePreview.appendChild(img);
+        }
+    
+        reader.readAsDataURL(file);
+        imagePreview.classList.remove('hidden');
+        imageInput.classList.add('hidden');
+      }
+    });
+    } )
