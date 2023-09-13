@@ -12,7 +12,9 @@ if (isAdmin()) {
   portfolioTitle.appendChild(modifyBtn);
   let addProjectDiv = document.querySelector('.add-project.hidden');
   const gallerymodal = document.querySelector('.modal-container-gallery')
-  const closeModalButton = document.getElementById('closeModal'); 
+  const closeModalButton = document.getElementById('closeModal');
+  const imagePreview = document.getElementById('image-preview');
+ 
 
   document.addEventListener('DOMContentLoaded', function() {
     
@@ -40,7 +42,6 @@ returnBackButton.addEventListener('click', function() {
 
 });
 
-
   modifyBtn.addEventListener('click', function(event){
     myModal.classList.toggle('hidden')
     const addPicture = document.querySelector ('.add-picture')
@@ -54,12 +55,14 @@ returnBackButton.addEventListener('click', function() {
     myModal.classList.toggle('hidden')
     addPicture.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
-
+    // imagePreview.classList.toggle('hidden');
   })
   closeModalButton.addEventListener('click', function(event) {
     myModal.classList.toggle('hidden');
     addPicture.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
+    // imagePreview.classList.toggle('hidden');
+
 })
   
   addPicture.addEventListener('click',function(event){
@@ -178,6 +181,7 @@ function generateAddImageForm(addProjectDiv) {
 
   let imageLabel = document.createElement('label');
   imageLabel.setAttribute('for', 'project-image');
+  
 
   let imageInput = document.createElement('input');
   imageInput.setAttribute('type', 'file');
@@ -185,7 +189,7 @@ function generateAddImageForm(addProjectDiv) {
   imageInput.setAttribute('name', 'project-image');
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
-  // <div id="image-preview" class="hidden"></div>
+
   let imagePreview = document.createElement('div')
   imagePreview.setAttribute('id','image-preview')
   imagePreview.classList.add('hidden')
@@ -193,6 +197,7 @@ function generateAddImageForm(addProjectDiv) {
   let nameLabel = document.createElement('label');
   nameLabel.setAttribute('for', 'project-name');
   nameLabel.textContent = 'Titre :';
+  nameLabel.style.marginTop = '30px';
 
   let nameInput = document.createElement('input');
   nameInput.setAttribute('type', 'text');
@@ -259,17 +264,6 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.style.height = '30px';
   submitButton.textContent = 'Valider';
 
-  // let imageInput = document.createElement('button');
-  // imageInput.setAttribute('type', 'button');
-  // imageInput.textContent = 'Ajouter une image';
-  // imageInput.classList.add('project-image');
-
-  // imageInput.addEventListener('click', function() {
-  //   imageInput.click();
-  // });
-
-  // form.appendChild(imageInput);
-
   form.appendChild(titleLabel);
   form.appendChild(imageLabel);
   form.appendChild(imageInput);
@@ -290,6 +284,32 @@ function generateAddImageForm(addProjectDiv) {
 // Appel de la fonction pour générer le formulaire d'ajout d'image
 const addProjectDiv = document.getElementById("addProjectDiv");
 generateAddImageForm(addProjectDiv);
+
+// Créer la div de l'image
+let imageDiv = document.createElement('div');
+imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
+
+let imageElement = document.createElement('img');
+imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
+imageElement.setAttribute('alt', 'Image');
+
+// Créer la div du texte
+let texteDiv = document.createElement('div');
+texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
+
+let texteElement = document.createElement('p');
+texteElement.textContent = 'jpg, png : 4mo max';
+
+// Ajouter l'image à la div de l'image
+imageDiv.appendChild(imageElement);
+
+// Ajouter le texte à la div du texte
+texteDiv.appendChild(texteElement);
+
+// Ajouter les divs au formulaire
+let form = document.getElementById('imageForm');
+form.appendChild(imageDiv);
+form.appendChild(texteDiv);
 
 // Ajout d'un écouteur d'événement pour la soumission du formulaire
 const imageForm = document.getElementById("imageForm");
@@ -387,3 +407,4 @@ let submitButton = document.querySelector('#submitBtn')
       }
     });
     } )
+
