@@ -35,10 +35,23 @@ logoutLink.style.display = 'block';
 // Ajouter un gestionnaire d'événement pour le lien "Logout"
 logoutLink.addEventListener('click', deconnexion);
 
+ // Rendre visible "categories-filters"
+ categoriesFilters.style.display = 'block';
+  
+ // Rendre invisible le lien "Logout"
+ logoutLink.style.display = 'none';
+ loginLink.style.display = 'block';
+
+
 // Vérifiez si l'utilisateur est un administrateur et activez le mode administrateur si c'est le cas
 if (isAdmin()) {
   console.log("Mode administrateur activé.");
   activerModeAdministrateur();
-}
+  categoriesFilters.style.display = 'none';
 
-console.log('Le script a été exécuté.'); // Ajout d'un message pour indiquer que le script a été exécuté
+  // Rendre invisible le lien "Login"
+  loginLink.style.display = 'none';
+
+  // Rendre visible le lien "Logout"
+  logoutLink.style.display = 'block';
+}

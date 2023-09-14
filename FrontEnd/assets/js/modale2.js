@@ -193,6 +193,23 @@ function generateAddImageForm(addProjectDiv) {
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
 
+  let imageIcone = document.createElement('img');
+  imageIcone.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
+  imageIcone.setAttribute('alt', 'Image');
+
+  let texteElement = document.createElement('p');
+  texteElement.textContent = 'jpg, png : 4mo max';
+
+  let divImageInput = document.createElement('div')
+  divImageInput.setAttribute('id','div-image-input')
+  divImageInput.classList.add('container-image-input')
+
+  divImageInput.appendChild(imageIcone)
+  divImageInput.appendChild(imageLabel)
+  divImageInput.appendChild(imageInput)
+  divImageInput.appendChild(texteElement)
+
+
   let imagePreview = document.createElement('div')
   imagePreview.setAttribute('id','image-preview')
   imagePreview.classList.add('hidden')
@@ -268,8 +285,9 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.textContent = 'Valider';
 
   form.appendChild(titleLabel);
-  form.appendChild(imageLabel);
-  form.appendChild(imageInput);
+  // form.appendChild(imageLabel);
+  // form.appendChild(imageInput);
+  form.appendChild(divImageInput);
   form.appendChild(imagePreview);
   form.appendChild(document.createElement('br'));
   form.appendChild(nameLabel);
@@ -288,31 +306,31 @@ function generateAddImageForm(addProjectDiv) {
 const addProjectDiv = document.getElementById("addProjectDiv");
 generateAddImageForm(addProjectDiv);
 
-// Créer la div de l'image
-let imageDiv = document.createElement('div');
-imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
-
-let imageElement = document.createElement('img');
-imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
-imageElement.setAttribute('alt', 'Image');
-
-// Créer la div du texte
-let texteDiv = document.createElement('div');
-texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
-
-let texteElement = document.createElement('p');
-texteElement.textContent = 'jpg, png : 4mo max';
+// // Créer la div de l'image
+// let imageDiv = document.createElement('div');
+// imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
+//
+// let imageElement = document.createElement('img');
+// imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
+// imageElement.setAttribute('alt', 'Image');
+//
+// // Créer la div du texte
+// let texteDiv = document.createElement('div');
+// texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
+//
+// let texteElement = document.createElement('p');
+// texteElement.textContent = 'jpg, png : 4mo max';
 
 // Ajouter l'image à la div de l'image
-imageDiv.appendChild(imageElement);
-
-// Ajouter le texte à la div du texte
-texteDiv.appendChild(texteElement);
-
-// Ajouter les divs au formulaire
-let form = document.getElementById('imageForm');
-form.appendChild(imageDiv);
-form.appendChild(texteDiv);
+// imageDiv.appendChild(imageElement);
+//
+// // Ajouter le texte à la div du texte
+// texteDiv.appendChild(texteElement);
+//
+// // Ajouter les divs au formulaire
+// let form = document.getElementById('imageForm');
+// form.appendChild(imageDiv);
+// form.appendChild(texteDiv);
 
 // Ajout d'un écouteur d'événement pour la soumission du formulaire
 const imageForm = document.getElementById("imageForm");

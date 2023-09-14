@@ -407,7 +407,7 @@ h2 {
 	left: 50%;
 	background-color: white;
 	transform: translate(-50%,-50%);
-	height: 650px;
+	height: 680px;
 	width: 50%;
 	border-radius: 15px;
 }
@@ -518,7 +518,7 @@ h2 {
 	color: black;
 	font-size: 26px;
     font-family: 'Work Sans', sans-serif;
-	margin-bottom: 115px;
+	margin-bottom: 55px;
 	z-index: 0;
 	
 
@@ -546,20 +546,26 @@ h2 {
 	font-weight: 700;
 	color: black;
 	margin : 2em auto ;
-	width: 180px;
+	width: 115px;
 	text-align: center;
 	border-radius: 60px ;
-	margin-top: 10px;
+	margin-top: 50px;
 	margin-bottom: 10px;
 	
 	
 }
 
+#image-preview{
+	margin-top: -20px;
+	max-width: 100%;
+
+
+}
 .fond-preview{
 	background-color: black;
 	
 }
-
+  
 .hidden {
 	display: none;
   }

@@ -3,6 +3,9 @@ let gallery = document.querySelector('.gallery');
 let projects = [];
 let categories = [];
 let categoriesFilters = document.querySelector('.categories-filters');
+let currentCategory = 'Tous';
+
+
 
 // Récupérer les données des projets depuis l'API
 async function getProjects() {
@@ -26,19 +29,22 @@ async function getCategories() {
 }
 
 // Filtrer les projets par catégorie lorsque le bouton de catégorie est cliqué
-function filterProjectsByCategory(category) {
+function filterProjectsByCategory() {
   let projectsInGallery = document.querySelectorAll('.gallery figure');
 
   for (let projectInGallery of projectsInGallery) {
     let projectCategoryId = parseInt(projectInGallery.getAttribute('data-category-id'));
 
-    if (category === 'Tous' || category.name === categories[projectCategoryId].name) {
-      projectInGallery.style.display = 'block'; // Afficher les projets de la catégorie sélectionnée
+    if (currentCategory === 'Tous' || currentCategory === categories[projectCategoryId].name) {
+      projectInGallery.style.display = 'block';
     } else {
-      projectInGallery.style.display = 'none'; // Masquer les projets qui n'appartiennent pas à la catégorie sélectionnée
+      projectInGallery.style.display = 'none';
     }
   }
 }
+
+
+
 
 // Afficher les projets dans la galerie
 function displayProjects() {
@@ -73,8 +79,10 @@ async function displayCategories() {
     categoriesFilters.appendChild(button);
 
     button.addEventListener('click', function (event) {
-      filterProjectsByCategory(category);
+      currentCategory = category.name;
+      filterProjectsByCategory();
     });
+    
   }
 }
 
@@ -83,7 +91,9 @@ async function initializePage() {
   await getProjects();
   displayProjects();
   displayCategories();
+  filterProjectsByCategory();
 }
+
 
 // Appeler la fonction d'initialisation pour démarrer la page
 initializePage();
