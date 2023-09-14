@@ -44,6 +44,7 @@ returnBackButton.addEventListener('click', function() {
   imagePreview.classList.add('hidden');
   imageInput.classList.remove('hidden');
   imageIcone.style.display = 'block';
+  imageInput.style.change ='hidden'
 });
 
   modifyBtn.addEventListener('click', function(event){
@@ -114,16 +115,13 @@ let imagePreview = document.getElementById('image-preview');
     document.addEventListener("DOMContentLoaded", modifierInput);
   })
   displayGalleryOnModale(gallerymodal)
-  // generateAddImageForm(addProjectDiv);
   
-  // showModal(); // Afficher la modale après avoir ajouté les éléments à la galerie
 }
 
 async function displayGalleryOnModale (gallerymodal){
   // Supposons que ce code soit à l'intérieur de la boucle qui gère l'ouverture de la modale pour chaque projet
   await getProjects();
   for (let project of projects) {
-      // openModal(project.imageUrl, project.title);
 
       // Créer une figure pour chaque projet et l'ajouter à la galerie
       let figure = document.createElement('figure');
@@ -186,7 +184,7 @@ fetch(`http://localhost:5678/api/works/${id}`,{
 // Définition de la fonction pour générer le formulaire d'ajout d'image
 function generateAddImageForm(addProjectDiv) {
   let form = document.createElement('form');
-  form.setAttribute('action', ''); // Mettez l'URL de l'API appropriée ici
+  form.setAttribute('action', '');
   form.setAttribute('method', 'POST');
   form.setAttribute('enctype', 'multipart/form-data');
   form.setAttribute('id', 'imageForm');
@@ -205,6 +203,8 @@ function generateAddImageForm(addProjectDiv) {
   imageInput.setAttribute('name', 'project-image');
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
+
+  
 
   let imageIcone = document.createElement('img');
   imageIcone.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
@@ -234,7 +234,6 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.setAttribute('type', 'text');
   nameInput.setAttribute('id', 'project-name');
   nameInput.setAttribute('name', 'project-name');
-  // nameInput.setAttribute('onkeyup', 'checkForm()');
   nameInput.setAttribute('required', 'true');
   nameInput.style.fontFamily = 'Syne';
   nameInput.style.fontWeight = '700';
@@ -244,6 +243,7 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.style.borderColor = 'white';
   nameInput.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
 
+  
   let categoryLabel = document.createElement('label');
   categoryLabel.setAttribute('for', 'category-select');
   categoryLabel.textContent = 'Catégorie :';
@@ -251,7 +251,6 @@ function generateAddImageForm(addProjectDiv) {
   let categorySelect = document.createElement('select');
   categorySelect.setAttribute('id', 'category-select');
   categorySelect.setAttribute('name', 'category-select');
-  // categorySelect.setAttribute('onchange', 'checkForm()');
   categorySelect.setAttribute('required', 'true');
   categorySelect.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
   categorySelect.style.width = '190px';
@@ -296,8 +295,6 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.textContent = 'Valider';
 
   form.appendChild(titleLabel);
-  // form.appendChild(imageLabel);
-  // form.appendChild(imageInput);
   form.appendChild(divImageInput);
   form.appendChild(imagePreview);
   form.appendChild(document.createElement('br'));
@@ -309,39 +306,12 @@ function generateAddImageForm(addProjectDiv) {
   form.appendChild(document.createElement('br'));
   form.appendChild(submitButton);
 
-  // addProjectDiv.innerHTML = ''; // Nettoie le contenu précédent
   addProjectDiv.appendChild(form);
 }
 
 // Appel de la fonction pour générer le formulaire d'ajout d'image
 const addProjectDiv = document.getElementById("addProjectDiv");
 generateAddImageForm(addProjectDiv);
-
-// Créer la div de l'image
-// let imageDiv = document.createElement('div');
-// imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
-
-// let imageElement = document.createElement('img');
-// imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
-// imageElement.setAttribute('alt', 'Image');
-
-// // Créer la div du texte
-// let texteDiv = document.createElement('div');
-// texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
-
-// let texteElement = document.createElement('p');
-// texteElement.textContent = 'jpg, png : 4mo max';
-
-// // Ajouter l'image à la div de l'image
-// imageDiv.appendChild(imageElement);
-
-// // Ajouter le texte à la div du texte
-// texteDiv.appendChild(texteElement);
-
-// // Ajouter les divs au formulaire
-// let form = document.getElementById('imageForm');
-// form.appendChild(imageDiv);
-// form.appendChild(texteDiv);
 
 // Ajout d'un écouteur d'événement pour la soumission du formulaire
 const imageForm = document.getElementById("imageForm");
@@ -391,7 +361,6 @@ let submitButton = document.querySelector('#submitBtn')
   });
 
   function checkForm(imageInput, nameSelect, categorySelect, submitButton) {
-    // let test=document.querySelector('#name')
 
     let imageInputValue = imageInput.value;
     let nameInputValue = nameSelect.value;
@@ -406,6 +375,8 @@ let submitButton = document.querySelector('#submitBtn')
       submitButton.style.backgroundColor = ''; 
     }
   }
+
+
   document.addEventListener('DOMContentLoaded', function() {
     const imagePreview = document.createElement("div");
     imagePreview.setAttribute("id", "image-preview");
