@@ -38,8 +38,12 @@ returnBackButton.addEventListener('click', function() {
   addPicture.classList.toggle('hidden'); // Retirez la classe "hidden" de l'élément add-picture
   delPicture.classList.toggle('hidden');
   modalTitle.classList.toggle('hidden');
-  // addPicture.style.display = 'none'
-
+  let imagePreview = document.getElementById('image-preview');
+  let imageInput = document.querySelector('#project-image');
+  let imageIcone = document.querySelector('#div-image-input img'); 
+  imagePreview.classList.add('hidden');
+  imageInput.classList.remove('hidden');
+  imageIcone.style.display = 'block';
 });
 
   modifyBtn.addEventListener('click', function(event){
@@ -55,14 +59,23 @@ returnBackButton.addEventListener('click', function() {
     myModal.classList.toggle('hidden')
     addPicture.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
-    // imagePreview.classList.toggle('hidden');
-  })
+    let imagePreview = document.getElementById('image-preview');
+    let imageInput = document.querySelector('#project-image');
+    let imageIcone = document.querySelector('#div-image-input img'); 
+    imagePreview.classList.add('hidden');
+    imageInput.classList.remove('hidden');
+    imageIcone.style.display = 'block';  })
+
   closeModalButton.addEventListener('click', function(event) {
     myModal.classList.toggle('hidden');
     addPicture.classList.toggle('hidden')
     delPicture.classList.toggle('hidden')
-    // imagePreview.classList.toggle('hidden');
-
+let imagePreview = document.getElementById('image-preview');
+  let imageInput = document.querySelector('#project-image');
+  let imageIcone = document.querySelector('#div-image-input img'); 
+  imagePreview.classList.add('hidden');
+  imageInput.classList.remove('hidden');
+  imageIcone.style.display = 'block';
 })
   
   addPicture.addEventListener('click',function(event){
@@ -193,6 +206,21 @@ function generateAddImageForm(addProjectDiv) {
   imageInput.setAttribute('accept', 'image/*');
   imageInput.setAttribute('required', 'true');
 
+  let imageIcone = document.createElement('img');
+  imageIcone.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
+  imageIcone.setAttribute('alt', 'Image');
+
+  let texteElement = document.createElement('p');
+  texteElement.textContent = 'jpg, png : 4mo max';
+
+  let divImageInput = document.createElement('div')
+  divImageInput.setAttribute('id','div-image-input')
+  divImageInput.classList.add('container-image-input')
+
+  divImageInput.appendChild(imageIcone)
+  divImageInput.appendChild(imageLabel)
+  divImageInput.appendChild(imageInput)
+  divImageInput.appendChild(texteElement)
   let imagePreview = document.createElement('div')
   imagePreview.setAttribute('id','image-preview')
   imagePreview.classList.add('hidden')
@@ -200,7 +228,7 @@ function generateAddImageForm(addProjectDiv) {
   let nameLabel = document.createElement('label');
   nameLabel.setAttribute('for', 'project-name');
   nameLabel.textContent = 'Titre :';
-  nameLabel.style.marginTop = '30px';
+  nameLabel.style.marginTop = '20px';
 
   let nameInput = document.createElement('input');
   nameInput.setAttribute('type', 'text');
@@ -268,8 +296,9 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.textContent = 'Valider';
 
   form.appendChild(titleLabel);
-  form.appendChild(imageLabel);
-  form.appendChild(imageInput);
+  // form.appendChild(imageLabel);
+  // form.appendChild(imageInput);
+  form.appendChild(divImageInput);
   form.appendChild(imagePreview);
   form.appendChild(document.createElement('br'));
   form.appendChild(nameLabel);
@@ -289,30 +318,30 @@ const addProjectDiv = document.getElementById("addProjectDiv");
 generateAddImageForm(addProjectDiv);
 
 // Créer la div de l'image
-let imageDiv = document.createElement('div');
-imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
+// let imageDiv = document.createElement('div');
+// imageDiv.setAttribute('id', 'imageDiv'); // Ajoutez un ID pour la div
 
-let imageElement = document.createElement('img');
-imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
-imageElement.setAttribute('alt', 'Image');
+// let imageElement = document.createElement('img');
+// imageElement.setAttribute('src', './assets/icons/imagemodale/picture-svgrepo-com 1.png');
+// imageElement.setAttribute('alt', 'Image');
 
-// Créer la div du texte
-let texteDiv = document.createElement('div');
-texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
+// // Créer la div du texte
+// let texteDiv = document.createElement('div');
+// texteDiv.setAttribute('id', 'texteDiv'); // Ajoutez un ID pour la div
 
-let texteElement = document.createElement('p');
-texteElement.textContent = 'jpg, png : 4mo max';
+// let texteElement = document.createElement('p');
+// texteElement.textContent = 'jpg, png : 4mo max';
 
-// Ajouter l'image à la div de l'image
-imageDiv.appendChild(imageElement);
+// // Ajouter l'image à la div de l'image
+// imageDiv.appendChild(imageElement);
 
-// Ajouter le texte à la div du texte
-texteDiv.appendChild(texteElement);
+// // Ajouter le texte à la div du texte
+// texteDiv.appendChild(texteElement);
 
-// Ajouter les divs au formulaire
-let form = document.getElementById('imageForm');
-form.appendChild(imageDiv);
-form.appendChild(texteDiv);
+// // Ajouter les divs au formulaire
+// let form = document.getElementById('imageForm');
+// form.appendChild(imageDiv);
+// form.appendChild(texteDiv);
 
 // Ajout d'un écouteur d'événement pour la soumission du formulaire
 const imageForm = document.getElementById("imageForm");
@@ -388,7 +417,10 @@ let submitButton = document.querySelector('#submitBtn')
     imageInput.addEventListener('change', function(event) {
       let imagePreview = document.getElementById('image-preview');
       let imageInput = document.querySelector('#project-image');
-    
+      let imageIcone = document.querySelector('#div-image-input img');
+      let texteElement = document.createElement('p');
+      texteElement.textContent = 'jpg, png : 4mo max'; 
+
       let file = event.target.files[0];
       if (file) {
         let reader = new FileReader();
@@ -402,13 +434,17 @@ let submitButton = document.querySelector('#submitBtn')
           }
     
           imagePreview.appendChild(img);
+          imageIcone.style.display = 'none'; // Rendre imageIcone invisible
+          texteElement.style.display = 'none'; // Rendre texteElement invisible
+
+
         }
     
         reader.readAsDataURL(file);
         imagePreview.classList.remove('hidden');
         imageInput.classList.add('hidden');
-        imageDiv.classList.add('hidden')
-        texteDiv.classList.add('hidden')
+        
+
       }
     });
     } )

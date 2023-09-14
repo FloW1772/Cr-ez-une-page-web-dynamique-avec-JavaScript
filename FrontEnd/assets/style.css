@@ -458,19 +458,31 @@ h2 {
 	background-color: black;
 }
 
-.add-picture{
-	margin-left: 40%; /* Ajoute un espace de 20 pixels à gauche */
-	display: block;
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 190px;
-	text-align: center;
-	border-radius: 60px ;
-	height: 30px;
+.add-picture {
+    position: relative;
+    margin-left: 40%;
+    display: block;
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 2em auto;
+    width: 190px;
+    text-align: center;
+    border-radius: 60px;
+    height: 30px;
 }
+
+.add-picture::before {
+    content: "";
+    position: absolute;
+    top: -30px; /* Ajustez la position verticale selon vos besoins */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ramène la ligne au centre */
+    width: 420px; /* Largeur de la ligne */
+    border-top: 1px solid rgba(179, 179, 179, 1)
+}
+
 
 .del-picture{
 	display: block;
@@ -518,26 +530,39 @@ h2 {
 	color: black;
 	font-size: 26px;
     font-family: 'Work Sans', sans-serif;
-	margin-bottom: 55px;
+	margin-bottom: 20px;
 	z-index: 0;
 	
 
   }
 
-	#imageDiv{
-	margin-top: -440px;
+  .container-image-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Utiliser la hauteur de l'écran */
+    background-color: rgba(232, 241, 246, 1);
+    width: 420px; /* Largeur spécifique */
+    height: 169px; /* Hauteur spécifique */
+    margin: 0 auto; /* Pour centrer le conteneur sur la page si nécessaire */
+}
+
+.container-image-input img {
+    width: 76px; /* Largeur spécifique de l'image */
+    height: 76px; /* Hauteur spécifique de l'image */
+    object-fit: cover; /* Pour s'assurer que l'image couvre entièrement le conteneur */
+}
+
+
+
+
+	#imageIcone{
+	margin-top: -900px;
 	top: 0;
 	
 	}
 
-	#texteDiv {
-    position: absolute;
-    top: 245px; 
-	z-index: 1;
-	margin-bottom: 50px;
-	
-	
-}
 
 	#project-image{
 
@@ -549,22 +574,24 @@ h2 {
 	width: 115px;
 	text-align: center;
 	border-radius: 60px ;
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-bottom: 10px;
 	
 	
 }
 
 #image-preview{
-	margin-top: -20px;
-	max-width: 100%;
-
-
-}
-.fond-preview{
-	background-color: black;
+	margin-top: -169px;
 	
 }
+
+#image-preview img{
+	width: 138px; /* Largeur spécifique de l'image */
+    height: 169px; /* Hauteur spécifique de l'image */
+
+}
+
+
   
 .hidden {
 	display: none;
