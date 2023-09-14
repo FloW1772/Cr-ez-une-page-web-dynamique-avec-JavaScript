@@ -76,6 +76,9 @@ returnBackButton.addEventListener('click', function() {
       let inputElement = document.getElementById("project-image");
       let filePreview = document.querySelector(".preview");
       let openFileInputButton = document.getElementById("openFileInput");
+      imageDiv.classList.toggle('hidden')
+      texteDiv.classList.toggle('hidden')
+
   
       openFileInputButton.addEventListener("click", function() {
         inputElement.click();
@@ -404,6 +407,8 @@ let submitButton = document.querySelector('#submitBtn')
         reader.readAsDataURL(file);
         imagePreview.classList.remove('hidden');
         imageInput.classList.add('hidden');
+        imageDiv.classList.add('hidden')
+        texteDiv.classList.add('hidden')
       }
     });
     } )

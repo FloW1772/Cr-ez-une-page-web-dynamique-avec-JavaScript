@@ -520,22 +520,26 @@ h2 {
     font-family: 'Work Sans', sans-serif;
 	margin-bottom: 115px;
 	z-index: 0;
+	
 
   }
 
-#imageDiv{
-margin-top: -440px
-;	top: 0;
-}
+	#imageDiv{
+	margin-top: -440px;
+	top: 0;
+	
+	}
 
-#texteDiv {
+	#texteDiv {
     position: absolute;
     top: 245px; 
 	z-index: 1;
 	margin-bottom: 50px;
+	
+	
 }
 
-#project-image{
+	#project-image{
 
 	z-index: 0;
 	font-family: 'Syne';
@@ -547,10 +551,13 @@ margin-top: -440px
 	border-radius: 60px ;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	
+	
 }
 
 .fond-preview{
-	background-color: #E8F1F6;
+	background-color: black;
+	
 }
 
 .hidden {
