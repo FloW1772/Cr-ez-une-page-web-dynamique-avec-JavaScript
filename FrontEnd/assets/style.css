@@ -3,86 +3,176 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	
+
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 	background-color: #FFFEF8;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	margin: 0 auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
 	position: relative;
 }
+
 header {
-	
+
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
-	
 }
 
-/* Dans votre fichier style.css */
 
 body {
-    max-width: none; /* Réinitialiser la largeur maximale par défaut du corps */
+	max-width: none;
 }
 
 
 header {
-max-width: 1440px;
- }
-/* Exemple d'application à une section spécifique */
-#introduction, #portfolio, #contact {
-    max-width: 1140px;
-    margin: 0 auto;
+	max-width: 1440px;
 }
 
-h1{
+#introduction,
+#portfolio,
+#contact {
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+h1 {
 	margin-left: 150px;
 	display: flex;
 	flex-direction: column;
@@ -92,25 +182,27 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+h1>span {
 	font-family: 'Work Sans';
-	font-size:10px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
-;
+	;
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -119,13 +211,16 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -135,6 +230,7 @@ li:hover {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -142,10 +238,12 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -158,24 +256,28 @@ li:hover {
 	width: 100%;
 
 }
+
 .gallery figure.hidden {
 	display: none;
-  }
-  
+}
+
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
+
+#contact>* {
 	text-align: center;
 
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -186,23 +288,25 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer nav ul {
@@ -210,18 +314,18 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-/* Style de base pour le bouton */
+
 .button {
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #1D6154;
-    border: none;
-    border-radius: 25px; /* Valeur plus élevée pour un bouton plus arrondi */
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-    margin: 5px; /* Espacement entre chaque bouton */
+	padding: 10px 20px;
+	background-color: #fff;
+	color: #1D6154;
+	border: none;
+	border-radius: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	transition: background-color 0.3s ease;
+	margin: 5px;
 	margin-bottom: 57px;
 	position: relative;
 	left: 25%;
@@ -229,59 +333,62 @@ footer nav ul {
 
 .button:hover {
 	border-color: #fff;
-    background-color: #1D6154;
+	background-color: #1D6154;
 	color: #fff;
 }
 
 .button:active {
-    transform: translateY(2px);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+	transform: translateY(2px);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
+
 .button-connection {
-    padding: 10px 20px;
-    background-color: #1D6154;
-    color: #fff;
-    border: none;
-    border-radius: 25px; /* Valeur plus élevée pour un bouton plus arrondi */
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-    margin: 5px; /* Espacemew: 2px nt entre chaque bouton */
+	padding: 10px 20px;
+	background-color: #1D6154;
+	color: #fff;
+	border: none;
+	border-radius: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
+	transition: background-color 0.3s ease;
+	margin: 5px;
 	margin-bottom: 57px;
 	position: relative;
 	margin-top: 5px;
 }
+
 a {
-	text-decoration: none; /* Supprimer le soulignement */
-	color: black; /* Définir la couleur du texte */
+	text-decoration: none;
+	color: black;
 }
+
 a:hover {
-	color: #B1663C; /* Définir la couleur du texte au survol */
+	color: #B1663C;
 }
+
 form {
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* Aligner les éléments horizontalement au centre */
-  }
-  
-  /* Ajouter de l'espace entre les éléments pour une meilleure mise en page */
- 	input, button {
+	align-items: center;
+}
+
+input,
+button {
 	margin: 7px 0;
-  }
-  
-  /* Aligner les h2 et p horizontalement au centre */
-  h2, p {
+}
+
+h2,
+p {
 	text-align: center;
-  }
-  /* Style pour mettre les deux éléments sur la même ligne */
+}
+
 .container {
 	display: inline-block;
 	cursor: pointer;
-  }
-  
-  /* Style pour la modale */
-  .modal {
+}
+
+.modal {
 	display: none;
 	position: fixed;
 	z-index: 1;
@@ -292,332 +399,334 @@ form {
 	background-color: rgba(0, 0, 0, 0.5);
 
 
-  }
+}
 
-  .modal-title{
+.modal-title {
 	color: black;
 
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #fff;
 	padding: 20px;
-  }
-  
-  #close-modal {
+}
+
+#close-modal {
 	margin-top: 10px;
-  }
-  #span-modif-icon {
-    margin-right: 50px; /* Vous pouvez ajuster le décalage horizontal ici */
+}
+
+#span-modif-icon {
+	margin-right: 50px;
 }
 
 #span-modif-text {
-    margin-left: 50px; /* Vous pouvez ajuster le décalage horizontal ici */
+	margin-left: 50px;
 }
+
 h2 {
-	margin-top: 20px; /* Ajout : Marge supérieure de 20px */
-  }
-/* Style pour les labels spécifiques à ce formulaire */
+	margin-top: 20px;
+}
+
 .custom-label {
 	display: block;
 	margin-bottom: 5px;
 	border-color: #fff;
 	text-align: left;
-	/* Ajoutez d'autres styles spécifiques au label si nécessaire */
-  }
-  
-  /* Style pour les zones de texte */
-  input[type="text"].custom-input,
-  input[type="password"].custom-input {
+}
+
+input[type="text"].custom-input,
+input[type="password"].custom-input {
 	width: 50%;
 	padding: 10px;
 	margin-bottom: 35px;
-	border: none; /* Modification : Supprimer la bordure */
-	background-color: #fff; /* Ajout : Rendre le fond transparent */
+	border: none;
+	background-color: #fff;
 	font-size: 16px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout : Box shadow autour de la zone de texte */
-	/* Ajoutez d'autres styles spécifiques à la zone de texte si nécessaire */
-  }
-  
-  .portfolio-title {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centrer verticalement */
-    gap: 40px; /* Espace entre les éléments */
-
-	#modify-btn {
-		color: black; /* Couleur du texte par défaut */
-		background-color: #FFFEF8; /* Couleur de fond par défaut */
-		border: none;
-		padding: 10px 20px;
-		cursor: pointer;
-	  }
-}
-
-.black-bar  {
-    background-color: black;
-    color: white;
-    position: relative;
-    top: 4%;
-    left: 50%;
-    transform: translate(-50%);
-    display: flex;
-	justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-/* .button-container{
-	margin-left: auto;
-} */
-
-.black-bar i {
-    font-size: 24px;
-    margin-right: 10px;
-	
-}
-
-.black-bar span {
-    margin-right: 10px;
-}
-.btn-primary {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.btn-success {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 10px; 
-}
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 
+	.portfolio-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
 
-
-.container-modal{
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 2;
-}
-.background-gray{
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(128, 128, 128, 0.404);
-}
-.modale{
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	background-color: white;
-	transform: translate(-50%,-50%);
-	height: 680px;
-	width: 50%;
-	border-radius: 15px;
-}
-.display-figure-modal{
-	height: 160px;
-	width: 17%;
-	position: relative;
-}
-.display-figure-modal img{
-	width: 100%;
-}
-
-.modal-container-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 90%;
-    margin: 20px auto -20px; /* Ajoutez une marge de 20px en haut (et 0px en bas) */
-}
-
-
-.display-figure-modal {
-    position: relative;
-    display: inline-block; /* Pour que le conteneur prenne la taille des boutons */
-	margin-bottom: 75px; /* Ajoute un espace de 10 pixels vers le bas */
-
-}
-
-.btn-mouv {
-    position: absolute;
-    top: 0;
-    right: 38px;
-    color: white;
-    background-color: black;
-    opacity: 0; /* Définir l'opacité à 0 par défaut pour les cacher */
-    transition: opacity 0.3s ease; /* Ajouter une transition pour une animation fluide */
-}
-
-.btn-mouv:hover {
-    opacity: 1; /* Définir l'opacité à 1 lorsqu'on passe la souris dessus */
-}
-
-.btn-trash {
-    position: absolute;
-    top: 0;
-    right: 6px;
-	color: white;
-	background-color: black;
-}
-
-.add-picture {
-    position: relative;
-    margin-left: 40%;
-    display: block;
-    font-family: 'Syne';
-    font-weight: 700;
-    color: white;
-    background-color: #1D6154;
-    margin: 2em auto;
-    width: 190px;
-    text-align: center;
-    border-radius: 60px;
-    height: 30px;
-}
-
-.add-picture::before {
-    content: "";
-    position: absolute;
-    top: -30px; /* Ajustez la position verticale selon vos besoins */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Ramène la ligne au centre */
-    width: 420px; /* Largeur de la ligne */
-    border-top: 1px solid rgba(179, 179, 179, 1)
-}
-
-
-.del-picture{
-	display: block;
-	margin-left: 40%;
-	margin-top: -10px;
-	background-color: white; /* Fond blanc */
-	border: 1px solid white; /* Bord blanc */
-	color: red; /* Texte en rouge */
-	font-family: 'Syne';
-
-}
-
-.return-back {
-    margin-left: 20px;
-	margin-top: 20px;
-    background-color: white;
-    border-color: white;
-    border: none;
-	
-}
-
-.close {
-    font-size: 24px;
-    position: absolute;
-    top: 35%;
-    left: 96%;
-    transform: translate(-50%, -50%);
-    bottom: -27px;
-	margin-top: 9px
-}
-
-
-
-#name-input {
-    border: none;
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-#category-select {
-    border: none;
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-.custom-title {
-	color: black;
-	font-size: 26px;
-    font-family: 'Work Sans', sans-serif;
-	margin-bottom: 20px;
-	z-index: 0;
-	
-
-  }
-
-  .container-image-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Utiliser la hauteur de l'écran */
-    background-color: rgba(232, 241, 246, 1);
-    width: 420px; /* Largeur spécifique */
-    height: 169px; /* Hauteur spécifique */
-    margin: 0 auto; /* Pour centrer le conteneur sur la page si nécessaire */
-}
-
-.container-image-input img {
-    width: 76px; /* Largeur spécifique de l'image */
-    height: 76px; /* Hauteur spécifique de l'image */
-    object-fit: cover; /* Pour s'assurer que l'image couvre entièrement le conteneur */
-}
-
-
-
-
-	#imageIcone{
-	margin-top: -900px;
-	top: 0;
-	
+		#modify-btn {
+			color: black;
+			background-color: #FFFEF8;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
 	}
 
-	#project-image{
+	.black-bar {
+		background-color: black;
+		color: white;
+		position: relative;
+		top: 4%;
+		left: 50%;
+		transform: translate(-50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+	}
 
-	z-index: 0;
-	font-family: 'Syne';
-	font-weight: 700;
-	color: black;
-	margin : 2em auto ;
-	width: 115px;
-	text-align: center;
-	border-radius: 60px ;
-	margin-top: 30px;
-	margin-bottom: 10px;
-	background-color: rgba(203, 214, 220, 1);
-	
-	
+	.black-bar i {
+		font-size: 24px;
+		margin-right: 10px;
+
+	}
+
+	.black-bar span {
+		margin-right: 10px;
+	}
+
+	.btn-primary {
+		background-color: black;
+		color: white;
+		border: none;
+		padding: 5px 10px;
+		cursor: pointer;
+	}
+
+	.btn-success {
+		background-color: white;
+		color: black;
+		border: none;
+		padding: 5px 10px;
+		cursor: pointer;
+		border-radius: 10px;
+	}
+
+
+
+
+	.container-modal {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
+	}
+
+	.background-gray {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(128, 128, 128, 0.404);
+	}
+
+	.modale {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		background-color: white;
+		transform: translate(-50%, -50%);
+		height: 680px;
+		width: 50%;
+		border-radius: 15px;
+	}
+
+	.display-figure-modal {
+		height: 160px;
+		width: 17%;
+		position: relative;
+	}
+
+	.display-figure-modal img {
+		width: 100%;
+	}
+
+	.modal-container-gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 90%;
+		margin: 20px auto -20px;
+	}
+
+
+	.display-figure-modal {
+		position: relative;
+		display: inline-block;
+		margin-bottom: 75px;
+
+	}
+
+	.btn-mouv {
+		position: absolute;
+		top: 0;
+		right: 38px;
+		color: white;
+		background-color: black;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.btn-mouv:hover {
+		opacity: 1;
+	}
+
+	.btn-trash {
+		position: absolute;
+		top: 0;
+		right: 6px;
+		color: white;
+		background-color: black;
+	}
+
+	.add-picture {
+		position: relative;
+		margin-left: 40%;
+		display: block;
+		font-family: 'Syne';
+		font-weight: 700;
+		color: white;
+		background-color: #1D6154;
+		margin: 2em auto;
+		width: 190px;
+		text-align: center;
+		border-radius: 60px;
+		height: 30px;
+	}
+
+	.add-picture::before {
+		content: "";
+		position: absolute;
+		top: -30px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 420px;
+		border-top: 1px solid rgba(179, 179, 179, 1)
+	}
+
+
+	.del-picture {
+		display: block;
+		margin-left: 40%;
+		margin-top: -10px;
+		background-color: white;
+		border: 1px solid white;
+		color: red;
+		font-family: 'Syne';
+
+	}
+
+	.return-back {
+		margin-left: 20px;
+		margin-top: 20px;
+		background-color: white;
+		border-color: white;
+		border: none;
+
+	}
+
+	.close {
+		font-size: 24px;
+		position: absolute;
+		top: 35%;
+		left: 96%;
+		transform: translate(-50%, -50%);
+		bottom: -27px;
+		margin-top: 9px
+	}
+
+
+
+	#name-input {
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	}
+
+	#category-select {
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	}
+
+	.custom-title {
+		color: black;
+		font-size: 26px;
+		font-family: 'Work Sans', sans-serif;
+		margin-bottom: 20px;
+		z-index: 0;
+
+
+	}
+
+	.container-image-input {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		background-color: rgba(232, 241, 246, 1);
+		width: 420px;
+		height: 169px;
+		margin: 0 auto;
+	}
+
+	.container-image-input img {
+		width: 76px;
+		height: 76px;
+		object-fit: cover;
+	}
+
+
+
+
+	#imageIcone {
+		margin-top: -900px;
+		top: 0;
+
+	}
+
+	#project-image {
+
+		z-index: 0;
+		font-family: 'Syne';
+		font-weight: 700;
+		color: black;
+		margin: 2em auto;
+		width: 115px;
+		text-align: center;
+		border-radius: 60px;
+		margin-top: 30px;
+		margin-bottom: 10px;
+		background-color: rgba(203, 214, 220, 1);
+
+
+	}
+
+
+	#image-preview {
+		margin-top: -169px;
+
+	}
+
+	#image-preview img {
+		width: 138px;
+		height: 169px;
+	}
+
+	#connectionError {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+
+	.hidden {
+		display: none;
+	}
 }
-
-
-#image-preview{
-	margin-top: -169px;
-	
-}
-
-#image-preview img{
-	width: 138px; /* Largeur spécifique de l'image */
-    height: 169px; /* Hauteur spécifique de l'image */
-
-}
-
-
-  
-.hidden {
-	display: none;
-  }
-  
-
-
-
-  
