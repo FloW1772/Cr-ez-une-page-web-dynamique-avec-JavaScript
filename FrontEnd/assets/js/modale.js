@@ -236,14 +236,6 @@ function generateAddImageForm(addProjectDiv) {
   nameInput.setAttribute('id', 'project-name')
   nameInput.setAttribute('name', 'project-name')
   nameInput.setAttribute('required', 'true')
-  nameInput.style.fontFamily = 'Syne'
-  nameInput.style.fontWeight = '700'
-  nameInput.style.margin = '2em auto'
-  nameInput.style.width = '190px'
-  nameInput.style.height = '30px'
-  nameInput.style.borderColor = 'white'
-  nameInput.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'
-
 
   let categoryLabel = document.createElement('label')
   categoryLabel.setAttribute('for', 'category-select')
@@ -253,11 +245,6 @@ function generateAddImageForm(addProjectDiv) {
   categorySelect.setAttribute('id', 'category-select')
   categorySelect.setAttribute('name', 'category-select')
   categorySelect.setAttribute('required', 'true')
-  categorySelect.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'
-  categorySelect.style.width = '190px'
-  categorySelect.style.height = '30px'
-  categorySelect.style.borderColor = 'white'
-  categorySelect.style.marginTop = '20px'
 
   let defaultOption = document.createElement('option')
   defaultOption.setAttribute('value', '')
@@ -284,15 +271,6 @@ function generateAddImageForm(addProjectDiv) {
   submitButton.setAttribute('id', 'submitBtn')
   submitButton.setAttribute('name', 'submit')
   submitButton.setAttribute('disabled', 'true')
-  submitButton.style.fontFamily = 'Syne'
-  submitButton.style.fontWeight = '700'
-
-
-  submitButton.style.margin = '2em auto'
-  submitButton.style.width = '190px'
-  submitButton.style.textAlign = 'center'
-  submitButton.style.borderRadius = '60px'
-  submitButton.style.height = '30px'
   submitButton.textContent = 'Valider'
 
   const modalContainerGallery = document.querySelector('.modal-container-gallery')
