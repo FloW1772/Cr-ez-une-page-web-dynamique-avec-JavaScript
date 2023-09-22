@@ -21,7 +21,6 @@ loginForm.addEventListener("submit", function (event) {
     return false
   }
 
-  // Vérification du champ "password"
   if (password === '') {
     alert("Veuillez saisir un mot de passe.")
     return false // Empêcher la soumission du formulaire si le champ est vide
@@ -41,13 +40,12 @@ loginForm.addEventListener("submit", function (event) {
       // Le serveur a renvoyé une réponse au format JSON, nous pouvons accéder aux données ici
       if (data && !data.message && !data.error) {
         connectionError.innerText = ''
-        // L'utilisateur a été trouvé, enregistrez le jeton dans le stockage local
+
         localStorage.setItem('token', data.token)
 
-        // Redirigez vers la page d'accueil (ou toute autre page appropriée)
         window.location.href = 'index.html'
       } else {
-        // L'utilisateur n'a pas été trouvé, affichez un message d'erreur ou effectuez une autre action appropriée
+        
         console.log('Utilisateur non trouvé.')
         connectionError.innerText = 'Votre Email et/ou votre mot de passe ne sont pas valide'
 
