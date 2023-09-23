@@ -10,7 +10,7 @@ function activerModeAdministrateur() {
   blackBar.classList.remove("hidden")
 }
 
-// Fonction pour gérer la déconnexion
+
 function deconnexion() {
   localStorage.removeItem('token')
   window.location.href = 'login.html'
@@ -19,14 +19,14 @@ function deconnexion() {
 // Récupérer tous les boutons existants sur la page
 const allCategoriesFilters = document.querySelector('.categories-filters')
 
-// Rendre les boutons invisibles
+
 allCategoriesFilters.style.display = 'none'
 const loginLink = document.querySelector('li a[href="login.html"]')
 loginLink.style.display = 'none'
 const logoutLink = document.querySelector('li a[href="#"]')
 logoutLink.style.display = 'block'
 
-// Ajouter un gestionnaire d'événement pour le lien "Logout"
+
 logoutLink.addEventListener('click', deconnexion)
 categoriesFilters.style.display = 'block'
 logoutLink.style.display = 'none'
